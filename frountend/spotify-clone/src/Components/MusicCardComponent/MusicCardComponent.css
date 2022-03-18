@@ -1,0 +1,83 @@
+.Music_cart_div {
+    width: auto;
+    border-radius: 8px;
+    padding: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.music_cart_image_div {
+    position: relative;
+}
+
+.musicPlayButton {
+    width: 60px;
+    height: 60px;
+    border: 50%;
+    background-color: var(--grayColor);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.musicPlayButton i {
+    font-size: 20px;
+}
+
+.musicPlayButton i {
+    color: var(--lightWhite);
+}
+
+.Music_cart_div img {
+    width: auto;
+    height: 200px;
+    z-index: 10;
+}
+
+.music_cart_contnet {
+    margin-top: -60px;
+    z-index: -1;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.Music_cart_div:hover .music_cart_contnet {
+    margin-top: 0;
+    opacity: 1;
+}
+
+.Music_cart_div:hover .musicPlayButton {
+    opacity: 1;
+}
+
+.Music_cart_div:hover {
+    background-color: var(--grayColor);
+}
+
+.all_music_list_cart h1 {
+    color: var(--mainColor);
+    font-size: 1.3rem;
+    margin-bottom: 1.3rem;
+    font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+.Music_cart_div h3 {
+    color: var(--mainColor);
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.Music_cart_div p {
+    color: var(--lightWhite);
+    margin-top: 0.2rem;
+    font-size: 13px;
+}

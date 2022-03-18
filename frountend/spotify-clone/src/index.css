@@ -19,17 +19,18 @@ code {
 /* color */
 :root {
     --lightGreen: #1db954;
-    --dark: #191414;
+    --dark: #100f0f;
     --mainColor: #ffff;
     --black: #000;
-    --grayColor: #999;
-    --lightWhite: #e1e1e1;
+    --grayColor: rgb(34, 34, 34);
+    --lightWhite: #a3a3a3;
+    --grayLight: rgba(63, 63, 63, 0.316);
 }
 /* color */
 
 /* global classes */
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .side_padding {

@@ -1,0 +1,14 @@
+.user_sm_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user_sm_div p {
+    color: var(--mainColor);
+    font-size: 18px;
+    font-weight: 600;
+}
+.user_sm_div i {
+    color: var(--mainColor);
+    cursor: pointer;
+}

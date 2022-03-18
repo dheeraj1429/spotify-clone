@@ -1,0 +1,32 @@
+.firn_sm_cd {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.your_fround_sm_Card {
+    width: 50px;
+    height: 50px;
+    background-color: var(--grayColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.your_fround_sm_Card i {
+    color: var(--lightWhite);
+}
+
+.code_sm_lin {
+    width: 100px;
+    height: 8px;
+    background-color: var(--grayColor);
+    border-radius: 30px;
+    margin-bottom: 0.6rem;
+    margin-left: 1rem;
+}
+
+.line_sm {
+    width: 80px;
+}

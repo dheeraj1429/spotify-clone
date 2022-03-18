@@ -1,0 +1,26 @@
+.controlles_buttons_div i {
+    margin: 0 1rem;
+    color: var(--lightWhite);
+    cursor: pointer;
+}
+
+.music_info_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.music_info_div .music_duration_div {
+    width: 500px;
+    height: 3px;
+    background-color: var(--lightWhite);
+    border-radius: 30px;
+}
+
+.music_info_div p {
+    color: var(--lightWhite);
+    margin-bottom: 0;
+    margin: 0 1rem;
+    font-size: 0.7rem;
+}

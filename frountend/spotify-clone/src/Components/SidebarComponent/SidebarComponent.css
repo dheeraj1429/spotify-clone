@@ -1,0 +1,20 @@
+.side_bar_div {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--dark);
+    padding: 1.5rem;
+}
+
+.side_bar_inner_div i {
+    color: var(--lightWhite);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.side_bar_inner_div hr {
+    color: var(--mainColor);
+}
+
+.side_bar_inner_div a {
+    text-decoration: none;
+}

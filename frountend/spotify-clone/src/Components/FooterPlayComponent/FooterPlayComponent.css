@@ -1,0 +1,8 @@
+.play_footer_Component_div {
+    width: 100%;
+    padding: 2rem 1rem;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
