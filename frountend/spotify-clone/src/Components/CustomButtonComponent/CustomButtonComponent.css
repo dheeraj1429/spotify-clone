@@ -1,0 +1,8 @@
+.signUp_button {
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    background-color: var(--lightGreen);
+    border-radius: 30px;
+    color: var(--mainColor);
+}

@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './UserInfoComponent.css';
 
-function UserInfoComponent() {
+function UserInfoComponent({ innerText, link }) {
     return (
         <div className="user_sm_div">
-            <p>Friend Activity</p>
-            <i class="fas fa-user"></i>
+            <p>{innerText}</p>
+            <Link to={link}>
+                <i class="fas fa-user"></i>
+            </Link>
         </div>
     );
 }

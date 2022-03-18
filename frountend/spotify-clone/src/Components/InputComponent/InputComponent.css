@@ -1,0 +1,11 @@
+.UserInputDiv {
+    width: 100%;
+    margin-top: 0.8rem;
+    height: 50px;
+    background-color: var(--grayColor);
+    padding: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--mainColor);
+}
