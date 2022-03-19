@@ -41,6 +41,42 @@ const userSignUp = async function (req, res, next) {
     }
 };
 
+// user login
+const userLogin = async function (req, res, next) {
+    try {
+        const { email, password } = req.body.data;
+
+        const findUserRef = await User.findOne({ email });
+
+        if (findUserRef) {
+            const passwordVarif = await bcryptjs.compare(password, findUserRef.password);
+
+            const token = await findUserRef.genrateUserToken();
+
+            if (passwordVarif) {
+                return res.status(200).json({
+                    success: true,
+                    message: 'login successfull',
+                    userData: token,
+                });
+            } else {
+                return res.status(200).json({
+                    success: false,
+                    message: 'password is worng',
+                });
+            }
+        } else {
+            return res.status(200).json({
+                success: false,
+                message: 'no use find!!',
+            });
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 module.exports = {
     userSignUp,
+    userLogin,
 };

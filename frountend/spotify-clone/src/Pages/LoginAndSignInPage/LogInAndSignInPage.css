@@ -16,18 +16,6 @@
     /* background-color: var(--mainColor); */
 }
 
-.LogIn_div input {
-    width: 100%;
-    margin-top: 0.5rem;
-    height: 50px;
-    background-color: var(--grayColor);
-    padding: 1rem;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    color: var(--mainColor);
-}
-
 .LogIn_div img {
     width: auto;
     height: 100px;

@@ -5,6 +5,8 @@ import { userPresent } from './Redux/Action/action';
 
 // components
 import AllMusicComponent from './Components/AllMusicComponent/AllMusicComponent';
+import SignUpComponent from './Components/SignUpComponent/SignUpComponent';
+import LogInComponent from './Components/LogInComponent/LogInComponent';
 
 // pages
 import HomePage from './Pages/HomePage/HomePage';
@@ -26,7 +28,10 @@ function App() {
                 <Route path="/" element={<HomePage />}>
                     <Route path="/" element={<AllMusicComponent />} />
                 </Route>
-                <Route path="/user-account" element={<LogInAndSignInPage />} />
+                <Route path="/user-account" element={<LogInAndSignInPage />}>
+                    <Route path="singUp" element={<SignUpComponent />} />
+                    <Route path="logIn" element={<LogInComponent />} />
+                </Route>
             </Routes>
         </div>
     );

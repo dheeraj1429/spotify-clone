@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpComponent from '../../Components/SignUpComponent/SignUpComponent';
+import { Outlet } from 'react-router';
 
 import './LogInAndSignInPage.css';
 
@@ -12,7 +12,7 @@ function LogInAndSignInPage() {
                         <img src="/images/logo.png" alt="" />
                     </div>
 
-                    <SignUpComponent />
+                    <Outlet />
                 </div>
             </div>
         </div>

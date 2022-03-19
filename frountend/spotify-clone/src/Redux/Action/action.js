@@ -32,3 +32,23 @@ export const userPresent = function (data) {
         payload: data,
     };
 };
+
+// user login in
+export const userLogIn = function (data) {
+    return async function (dispatch) {
+        try {
+            const userLoginRef = await axios.post('/user/logIn', { data }, { headers });
+
+            if (userLoginRef) {
+                window.localStorage.setItem('userData', JSON.stringify(userLoginRef.data));
+
+                dispatch({
+                    type: ACTION_TYPE.USER_SIGNUP,
+                    payload: userLoginRef.data,
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};

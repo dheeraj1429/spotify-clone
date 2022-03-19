@@ -11,7 +11,7 @@ function RightSideBarComponent() {
     return (
         <div className="right_sidebar_div">
             {selector && selector.success === true ? null : (
-                <UserInfoComponent innerText={'Friend Activity'} link={'/user-account'} />
+                <UserInfoComponent innerText={'Friend Activity'} link={'/user-account/singUp'} />
             )}
 
             <div className="mt-4 mb-4">
