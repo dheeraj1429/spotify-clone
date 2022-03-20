@@ -60,13 +60,19 @@ function LogInComponent() {
                 />
 
                 <div className="mt-3 text-center">
-                    <CustomButtonComponent innerText={'Sign Up'} onClick={SendHandler} />
+                    <CustomButtonComponent
+                        innerText={'log In'}
+                        onClick={SendHandler}
+                        elmClass={'signUp_button'}
+                    />
 
                     <Link to={'/user-account/SingUp'}>
                         <p className="mt-4 mb-0">Sign Up</p>
                     </Link>
 
-                    <p className="mt-3">RESET PASSWORD</p>
+                    <Link to={'/user-account/forget-password'}>
+                        <p className="mt-3">RESET PASSWORD</p>
+                    </Link>
                 </div>
             </div>
         </div>

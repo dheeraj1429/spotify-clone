@@ -1,5 +1,11 @@
 const User = require('../model/userModel');
 const bcryptjs = require('bcryptjs');
+const nodemailer = require('nodemailer');
+const cart = require('../cart');
+const fs = require('fs');
+const rootFolder = require('../util/rootFolder');
+const path = require('path');
+const jwt = require('jsonwebtoken');
 
 // user signUp => Post
 const userSignUp = async function (req, res, next) {
@@ -76,7 +82,106 @@ const userLogin = async function (req, res, next) {
     }
 };
 
+// forget password
+const forgetPassword = async function (req, res, next) {
+    try {
+        const email = req.body.data;
+
+        if (email) {
+            const userFindInDb = await User.findOne({ email });
+
+            const tokenGenrate = await jwt.sign(
+                {
+                    id: userFindInDb._id,
+                    name: userFindInDb.name,
+                    email: userFindInDb.email,
+                },
+                cart.KEY
+            );
+
+            fs.readFile(
+                path.join(rootFolder, 'views', 'tamplates', 'mail.ejs'),
+                'utf-8',
+                function (err, data) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        const output = data.replace(
+                            '<a href="#">reset password</a>',
+                            `<a href="http://localhost:3000/user-account/reset-password/${tokenGenrate}">reset password</a>`
+                        );
+
+                        let transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: cart.EMAIL,
+                                pass: cart.PASS,
+                            },
+                        });
+
+                        const mailoption = {
+                            from: cart.EMAIL,
+                            to: email,
+                            subject: 'rest password',
+                            text: 'rest-password request',
+                            html: output,
+                        };
+
+                        transporter.sendMail(mailoption, function (err, data) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log('mail send');
+                            }
+                        });
+                    }
+                }
+            );
+        } else {
+            console.log('email is required');
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+// reset password request
+const userResetPasswordRequest = async function (req, res, next) {
+    try {
+        const { id, password } = req.body.data;
+
+        const varifyUser = await jwt.verify(id, cart.KEY);
+
+        if (varifyUser) {
+            const hashingPassword = await bcryptjs.hash(password, 11);
+
+            const userUpdateDataDb = await User.updateOne(
+                { _id: varifyUser.id, name: varifyUser.name, email: varifyUser.email },
+                { $set: { password: hashingPassword } }
+            );
+
+            if (userUpdateDataDb) {
+                return res.status(200).json({
+                    success: true,
+                    message: 'password reset successful',
+                });
+            } else {
+                return res.status(200).json({
+                    success: false,
+                    message: 'somthing worng',
+                });
+            }
+        } else {
+            console.log('somthing worng!!');
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 module.exports = {
     userSignUp,
     userLogin,
+    forgetPassword,
+    userResetPasswordRequest,
 };

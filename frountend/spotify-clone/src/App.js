@@ -7,6 +7,8 @@ import { userPresent } from './Redux/Action/action';
 import AllMusicComponent from './Components/AllMusicComponent/AllMusicComponent';
 import SignUpComponent from './Components/SignUpComponent/SignUpComponent';
 import LogInComponent from './Components/LogInComponent/LogInComponent';
+import ForgetPasswordComponent from './Components/ForgetPasswordComponent/ForgetPasswordComponent';
+import ResetPasswordComponent from './Components/ResetPasswordComponent/ResetPasswordComponent';
 
 // pages
 import HomePage from './Pages/HomePage/HomePage';
@@ -31,6 +33,8 @@ function App() {
                 <Route path="/user-account" element={<LogInAndSignInPage />}>
                     <Route path="singUp" element={<SignUpComponent />} />
                     <Route path="logIn" element={<LogInComponent />} />
+                    <Route path="forget-password" element={<ForgetPasswordComponent />} />
+                    <Route path="reset-password/:id" element={<ResetPasswordComponent />} />
                 </Route>
             </Routes>
         </div>

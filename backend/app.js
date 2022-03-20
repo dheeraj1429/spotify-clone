@@ -5,6 +5,10 @@ const cors = require('cors');
 const port = process.env.PORT || 8000;
 const conntion = require('./model/db');
 const session = require('express-session');
+const path = require('path');
+
+// halper funtions
+const rootFolder = require('./util/rootFolder');
 
 // middlewares
 app.use(cors());
@@ -19,6 +23,7 @@ app.use(
 );
 
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(rootFolder, 'public')));
 
 // router files
 const auth = require('./routes/authRoute');

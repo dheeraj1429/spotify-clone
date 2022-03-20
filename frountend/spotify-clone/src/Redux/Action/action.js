@@ -52,3 +52,38 @@ export const userLogIn = function (data) {
         }
     };
 };
+
+// user forget password
+export const userForgetPassword = function (data) {
+    return async function (dispatch) {
+        try {
+            const forgetPasswordRef = await axios.post(
+                '/user/forgetPassword',
+                { data },
+                { headers }
+            );
+
+            console.log(forgetPasswordRef);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};
+
+// user reset password
+export const userResetPasswordRequest = function (data) {
+    return async function (dispatch) {
+        try {
+            const userRef = await axios.post('/user/reset-password', { data }, { headers });
+
+            if (userRef) {
+                dispatch({
+                    type: ACTION_TYPE.PASSWORD_RESET_REQUEST,
+                    payload: userRef.data,
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};

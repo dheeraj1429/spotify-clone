@@ -2,6 +2,7 @@ import ACTION_TYPE from '../ActionType/actionType';
 
 const initalState = {
     UserLoginStatus: null,
+    UserResetPassword: null,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -10,6 +11,12 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 UserLoginStatus: action.payload,
+            };
+
+        case ACTION_TYPE.PASSWORD_RESET_REQUEST:
+            return {
+                ...state,
+                UserResetPassword: action.payload,
             };
 
         default:

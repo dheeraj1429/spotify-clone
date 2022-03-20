@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-
-const KEY = 'SAIDBASNIUBIUB@^*&@!^#(@U#!VBIJKB!@(*Y(8y9b181yu2v82h21';
+const cart = require('../cart');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -33,7 +32,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.genrateUserToken = async function () {
     try {
-        const token = await jwt.sign({ name: this.name, email: this.email }, KEY);
+        const token = await jwt.sign({ name: this.name, email: this.email }, cart.KEY);
 
         this.tokens = this.tokens.concat({ token });
 

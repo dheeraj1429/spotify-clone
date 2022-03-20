@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const cart = require('../cart');
 
 const conntion = function (callBack) {
     mongoose
-        .connect('mongodb://localhost:27017/shpotify-clone')
+        .connect(cart.DBURL)
         .then((resutl) => {
             console.log('connected');
 

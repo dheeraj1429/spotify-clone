@@ -67,13 +67,15 @@ function SignUpComponent() {
             />
 
             <div className="mt-3 text-center">
-                <CustomButtonComponent innerText={'Sign Up'} onClick={SendHandler} />
+                <CustomButtonComponent
+                    innerText={'Sign Up'}
+                    onClick={SendHandler}
+                    elmClass={'signUp_button'}
+                />
 
                 <Link to={'/user-account/logIn'}>
                     <p className="mt-4 mb-0">Log In</p>
                 </Link>
-
-                <p className="mt-3">RESET PASSWORD</p>
             </div>
         </div>
     );
