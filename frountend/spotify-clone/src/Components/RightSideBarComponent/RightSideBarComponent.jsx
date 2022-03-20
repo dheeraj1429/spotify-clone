@@ -2,6 +2,7 @@ import React from 'react';
 import UserInfoComponent from '../UserInfoComponent/UserInfoComponent';
 import UserFriendSmCartComponent from '../UserFriendSmCartComponent/UserFriendSmCartComponent';
 import { useSelector } from 'react-redux';
+import UserLoginProfileComponent from '../UserLoginProfileComponent/UserLoginProfileComponent';
 
 import './RightSideBarComponent.css';
 
@@ -10,7 +11,9 @@ function RightSideBarComponent() {
 
     return (
         <div className="right_sidebar_div">
-            {selector && selector.success === true ? null : (
+            {selector && selector.success === true ? (
+                <UserLoginProfileComponent />
+            ) : (
                 <UserInfoComponent innerText={'Friend Activity'} link={'/user-account/singUp'} />
             )}
 

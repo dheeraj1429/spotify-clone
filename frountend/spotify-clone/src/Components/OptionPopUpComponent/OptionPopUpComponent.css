@@ -1,0 +1,18 @@
+.option_popUp_div {
+    width: 350px;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: var(--dark);
+    border-right: 1px solid var(--grayLight);
+    border-bottom: 1px solid var(--grayLight);
+    border-left: 1px solid var(--grayLight);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.option_popUp_div_active {
+    opacity: 1;
+    visibility: visible;
+}

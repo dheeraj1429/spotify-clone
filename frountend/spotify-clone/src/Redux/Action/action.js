@@ -87,3 +87,11 @@ export const userResetPasswordRequest = function (data) {
         }
     };
 };
+
+// logout user
+export const logOutUser = function (data) {
+    return {
+        type: ACTION_TYPE.USER_LOG_OUT,
+        payload: data,
+    };
+};

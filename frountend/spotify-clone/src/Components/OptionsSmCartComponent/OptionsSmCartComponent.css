@@ -1,0 +1,17 @@
+.option_sm_div_cart {
+    width: 100%;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.option_sm_div_cart i {
+    margin-right: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--lightWhite);
+}
+
+.option_sm_div_cart p {
+    font-size: 0.8rem;
+}

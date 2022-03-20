@@ -19,6 +19,12 @@ const userReducer = function (state = initalState, action) {
                 UserResetPassword: action.payload,
             };
 
+        case ACTION_TYPE.USER_LOG_OUT:
+            return {
+                ...state,
+                UserLoginStatus: action.payload,
+            };
+
         default:
             return {
                 ...state,

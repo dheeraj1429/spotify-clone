@@ -30,6 +30,8 @@ const userSignUp = async function (req, res, next) {
                     return res.status(201).json({
                         success: true,
                         message: 'user signup successful',
+                        name: userRef.name,
+                        email: userRef.email,
                         userData: token,
                     });
                 }
@@ -63,6 +65,8 @@ const userLogin = async function (req, res, next) {
                 return res.status(200).json({
                     success: true,
                     message: 'login successfull',
+                    name: findUserRef.name,
+                    email: findUserRef.email,
                     userData: token,
                 });
             } else {

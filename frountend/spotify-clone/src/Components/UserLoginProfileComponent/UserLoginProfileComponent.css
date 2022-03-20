@@ -1,0 +1,30 @@
+.user_preofile_div {
+    width: 100%;
+}
+
+.user_profile_inner_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user_preofile_div p {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.user_profile_inner_div .user_pr_crd {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--lightWhite);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user_profile_inner_div {
+    position: relative;
+}
