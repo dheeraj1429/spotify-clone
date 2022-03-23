@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { userPresent } from './Redux/Action/action';
+import { getAllMusic } from './Redux/Action/action';
 
 // components
 import AllMusicComponent from './Components/AllMusicComponent/AllMusicComponent';
@@ -13,10 +14,13 @@ import ResetPasswordComponent from './Components/ResetPasswordComponent/ResetPas
 // pages
 import HomePage from './Pages/HomePage/HomePage';
 import LogInAndSignInPage from './Pages/LoginAndSignInPage/LogInAndSignInPage';
+import MusicUploadPage from './Pages/MusicUploadPage/MusicUploadPage';
 
 function App() {
     const dispatch = useDispatch();
+
     useEffect(() => {
+        dispatch(getAllMusic());
         const data = window.localStorage.getItem('userData');
         if (data) {
             const userData = JSON.parse(data);
@@ -36,6 +40,7 @@ function App() {
                     <Route path="forget-password" element={<ForgetPasswordComponent />} />
                     <Route path="reset-password/:id" element={<ResetPasswordComponent />} />
                 </Route>
+                <Route path="/upload-music" element={<MusicUploadPage />} />
             </Routes>
         </div>
     );

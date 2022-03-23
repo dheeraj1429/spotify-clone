@@ -12,6 +12,7 @@
 /build
 /cart
 /cart
+/uploads
 
 # misc
 .DS_Store

@@ -3,6 +3,9 @@ import ACTION_TYPE from '../ActionType/actionType';
 const initalState = {
     UserLoginStatus: null,
     UserResetPassword: null,
+    ShowProfilePopUp: false,
+    UploadMusicStatus: null,
+    AllMusicList: null,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -23,6 +26,24 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 UserLoginStatus: action.payload,
+            };
+
+        case ACTION_TYPE.SHOW_PROFILE_CARD_POPUP:
+            return {
+                ...state,
+                ShowProfilePopUp: action.payload,
+            };
+
+        case ACTION_TYPE.MUSIC_UPLOAD_INFO:
+            return {
+                ...state,
+                UploadMusicStatus: action.payload,
+            };
+
+        case ACTION_TYPE.ALL_MUSIC_LIST:
+            return {
+                ...state,
+                AllMusicList: action.payload,
             };
 
         default:

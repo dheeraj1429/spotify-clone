@@ -1,0 +1,11 @@
+.songUpload_sm_Elm {
+    width: 100%;
+    height: 40px;
+    padding: 1rem;
+    background-color: var(--grayColor);
+    border: none;
+    border-radius: 5px;
+    color: var(--mainColor);
+    outline: none;
+    margin: 0.7rem 0;
+}

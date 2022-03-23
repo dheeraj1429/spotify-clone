@@ -24,6 +24,12 @@ function OptionPopUpComponent({ showIn }) {
                 innerText={'Log Out'}
                 action={LogOutUser}
             />
+
+            <OptionsSmCartComponent
+                icon={'fas fa-upload'}
+                innerText={'Upload Music'}
+                link={'/upload-music'}
+            />
         </div>
     );
 }

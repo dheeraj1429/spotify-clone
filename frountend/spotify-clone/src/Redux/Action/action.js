@@ -95,3 +95,47 @@ export const logOutUser = function (data) {
         payload: data,
     };
 };
+
+// show profile popup
+export const showProfilePopup = function (data) {
+    return {
+        type: ACTION_TYPE.SHOW_PROFILE_CARD_POPUP,
+        payload: data,
+    };
+};
+
+// upload music
+export const uploadMusic = function (data) {
+    return async function (dispatch) {
+        try {
+            const musicRef = await axios.post('/music/upload', data, { headers });
+
+            if (musicRef) {
+                dispatch({
+                    type: ACTION_TYPE.MUSIC_UPLOAD_INFO,
+                    payload: musicRef.data,
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};
+
+// get all music from the databse
+export const getAllMusic = function () {
+    return async function (dispatch) {
+        try {
+            const allMusicList = await axios.post('/music/getAllMusic');
+
+            if (allMusicList) {
+                dispatch({
+                    type: ACTION_TYPE.ALL_MUSIC_LIST,
+                    payload: allMusicList.data,
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};

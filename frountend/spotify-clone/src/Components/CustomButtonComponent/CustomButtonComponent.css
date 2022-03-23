@@ -10,3 +10,10 @@
     border-radius: 30px;
     color: var(--mainColor);
 }
+
+.uploadMusic {
+    border-radius: 30px;
+    margin-top: 0.5rem;
+    background-color: var(--grayLight);
+    color: var(--mainColor);
+}

@@ -1,0 +1,20 @@
+Backend - nodejs.
+1 - user sign up. -> done
+    a - user password hashing. -> done
+    b - user sign up token genrate. -> done
+2 - user login. -> done
+    a - user login with sign up account. -> done
+    b - genrate user token when the user login. -> done
+3 - reset password. -> done
+    a - user can reset the password by using the email address. -> done
+    b - user can reset the password using the email & gmail. -> done
+    c - user new password store into the user password collection. -> done
+    d - genrate hashing password (new password). -> done
+    e - when the user change the password then user can only login with new password. -> done
+4 - user logout. -> done
+    a - user can logout. -> done
+5 - music upload. -> panding..
+    a - user can upload the music file, tracks...
+    b - when the uploading is done redirect user into the home page.
+    c - show to uploaded music file.
+    d - user can also play the music by clicking in the play button.

@@ -1,7 +1,9 @@
 import React from 'react';
 import './MusicCardComponent.css';
 
-function MusicCardComponent() {
+function MusicCardComponent({ data }) {
+    console.log(data);
+
     return (
         <div className="Music_cart_div text-center">
             <div className="music_cart_image_div">
@@ -14,8 +16,8 @@ function MusicCardComponent() {
                 </div>
             </div>
             <div className="music_cart_contnet">
-                <h3>Uncoverentional Ghailb</h3>
-                <p>Fahd Husian with Rekha</p>
+                <h3>{data.songType}</h3>
+                <p>{`${data.songArtist} - ${data.name}`}</p>
             </div>
         </div>
     );

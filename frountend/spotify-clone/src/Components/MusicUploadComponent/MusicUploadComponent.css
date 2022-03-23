@@ -1,0 +1,26 @@
+.music_upload_div {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(34, 34, 34, 1) 73%);
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+.music_upload_div_inner {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px var(--dark);
+    background-color: var(--dark);
+}
+
+.music_upload_div_cl {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    display: flex;
+}
+
+.music_upload_elm {
+    width: 500px;
+}

@@ -1,0 +1,11 @@
+.music_upload_select_div {
+    width: 100%;
+    height: 40px;
+    padding: 0 0.5rem;
+    background-color: var(--grayColor);
+    border: none;
+    border-radius: 5px;
+    color: var(--lightWhite);
+    outline: none;
+    margin: 0.7rem 0;
+}

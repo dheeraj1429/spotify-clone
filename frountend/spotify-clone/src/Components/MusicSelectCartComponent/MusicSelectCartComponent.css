@@ -1,0 +1,43 @@
+.music_upload_cart_pr {
+    width: 200px;
+    height: 200px;
+    background-color: var(--mainColor);
+    border-radius: 8px;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.music_upload_cart_pr .music_card_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.file_upload_select_op {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 0.5rem 0.2rem;
+    border-radius: 0px 0px 6px 6px;
+    background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
+}
+
+.file_upload_select_op input {
+    opacity: 0;
+    z-index: 10;
+}
+
+.music_card_div i {
+    font-size: 30px;
+}
+.file_upload_select_op p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: var(--mainColor);
+    z-index: 1;
+}
