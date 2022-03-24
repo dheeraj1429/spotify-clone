@@ -14,7 +14,9 @@ Backend - nodejs.
 4 - user logout. -> done
     a - user can logout. -> done
 5 - music upload. -> panding..
-    a - user can upload the music file, tracks...
-    b - when the uploading is done redirect user into the home page.
-    c - show to uploaded music file.
-    d - user can also play the music by clicking in the play button.
+    a - user can upload the music file, tracks... -> done
+    b - when the uploading is done redirect user into the home page. -> done
+    c - show to uploaded music file. -> done
+    d - user can also play the music by clicking in the play button. -> panding..
+6 - music play. -> panding..
+    a - user can play the music -> panding..

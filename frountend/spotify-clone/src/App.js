@@ -14,6 +14,8 @@ import ResetPasswordComponent from './Components/ResetPasswordComponent/ResetPas
 // pages
 import HomePage from './Pages/HomePage/HomePage';
 import LogInAndSignInPage from './Pages/LoginAndSignInPage/LogInAndSignInPage';
+
+// dashboard pages
 import MusicUploadPage from './Pages/MusicUploadPage/MusicUploadPage';
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
                     <Route path="forget-password" element={<ForgetPasswordComponent />} />
                     <Route path="reset-password/:id" element={<ResetPasswordComponent />} />
                 </Route>
-                <Route path="/upload-music" element={<MusicUploadPage />} />
+                <Route path="/dashboard">
+                    <Route path="upload-music" element={<MusicUploadPage />} />
+                </Route>
             </Routes>
         </div>
     );

@@ -14,9 +14,9 @@ function AllMusicComponent() {
             <div className="mt-5 all_music_list_cart">
                 <h1>Shows to try</h1>
                 <div className="music_cl_div">
-                    {selector.map((el) => (
-                        <MusicCardComponent key={el._id} data={el} />
-                    ))}
+                    {selector !== null
+                        ? selector.map((el) => <MusicCardComponent key={el._id} data={el} />)
+                        : null}
                 </div>
             </div>
         </div>

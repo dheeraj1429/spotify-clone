@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import HeadingComponent from '../HeadingComponent/HeadingComponent';
+import HeadingComponent from '../../Components/HeadingComponent/HeadingComponent';
 import SongUploadInputComponent from '../SongUploadInputComponent/SongUploadInputComponent';
 import MusicUploadSelectOptionComponet from '../MusicUploadSelectOptionComponet/MusicUploadSelectOptionComponet';
-import CustomButtonComponent from '../CustomButtonComponent/CustomButtonComponent';
+import CustomButtonComponent from '../../Components/CustomButtonComponent/CustomButtonComponent';
 import MusicTextAriaComponent from '../MusicTextAriaComponent/MusicTextAriaComponent';
 import MusicSelectCartComponent from '../MusicSelectCartComponent/MusicSelectCartComponent';
 import { useDispatch } from 'react-redux';

@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
             },
         },
     ],
+    isAdmin: {
+        type: String,
+        default: 'user',
+    },
 });
 
 userSchema.methods.genrateUserToken = async function () {

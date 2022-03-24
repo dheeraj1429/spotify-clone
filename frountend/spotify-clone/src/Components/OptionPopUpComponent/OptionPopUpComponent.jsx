@@ -3,16 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import UserProfileSmCardComponent from '../UserProfileSmCardComponent/UserProfileSmCardComponent';
 import OptionsSmCartComponent from '../OptionsSmCartComponent/OptionsSmCartComponent';
 import { logOutUser } from '../../Redux/Action/action';
+import { useNavigate } from 'react-router';
 
 import './OptionPopUpComponent.css';
 
 function OptionPopUpComponent({ showIn }) {
     const selector = useSelector((state) => state.userStoreData.UserLoginStatus);
     const dispatch = useDispatch();
+    const navigation = useNavigate();
 
     const LogOutUser = function () {
         window.localStorage.removeItem('userData');
         dispatch(logOutUser(null));
+        navigation('/');
     };
 
     return (
@@ -25,11 +28,11 @@ function OptionPopUpComponent({ showIn }) {
                 action={LogOutUser}
             />
 
-            <OptionsSmCartComponent
+            {/* <OptionsSmCartComponent
                 icon={'fas fa-upload'}
                 innerText={'Upload Music'}
                 link={'/upload-music'}
-            />
+            /> */}
         </div>
     );
 }

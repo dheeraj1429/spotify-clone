@@ -32,6 +32,7 @@ const userSignUp = async function (req, res, next) {
                         message: 'user signup successful',
                         name: userRef.name,
                         email: userRef.email,
+                        admin: userRef.isAdmin,
                         userData: token,
                     });
                 }
@@ -67,6 +68,7 @@ const userLogin = async function (req, res, next) {
                     message: 'login successfull',
                     name: findUserRef.name,
                     email: findUserRef.email,
+                    admin: findUserRef.isAdmin,
                     userData: token,
                 });
             } else {
