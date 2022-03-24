@@ -24,7 +24,14 @@ code {
     --black: #000;
     --grayColor: rgb(34, 34, 34);
     --lightWhite: #a3a3a3;
-    --grayLight: rgba(63, 63, 63, 0.316);
+    --grayLight: rgb(95, 95, 95);
+    --lightBgCl: #f4f6fd;
+    --darkLightCl: #1e2f65;
+    --activeBrCl: #f4f6fd;
+    --newCl: #1f98ff;
+    --lightGray: #a7acb1;
+    --redCl: #e73c3c;
+    --sm_gray: #3f3f3f;
 }
 /* color */
 

@@ -1,0 +1,19 @@
+.dashBoard_heading_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashBoard_heading_div h4 {
+    color: var(--black);
+    font-size: 30px;
+}
+
+.dashBoard_heading_div p {
+    font-size: 14px;
+}
+
+.dashBoard_heading_div i {
+    font-size: 12px;
+    margin-right: 0.3rem;
+}

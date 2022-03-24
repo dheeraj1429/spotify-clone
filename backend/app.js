@@ -35,11 +35,11 @@ app.use(
 
 // router files
 const auth = require('./routes/authRoute');
-const index = require('./routes/indexRoute');
+const admin = require('./routes/adminRouter');
 
 // route
 app.use('/user', auth);
-app.use('/music', index);
+app.use('/music', admin);
 
 conntion(() => {
     // server start

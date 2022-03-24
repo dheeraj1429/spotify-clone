@@ -15,8 +15,10 @@ import ResetPasswordComponent from './Components/ResetPasswordComponent/ResetPas
 import HomePage from './Pages/HomePage/HomePage';
 import LogInAndSignInPage from './Pages/LoginAndSignInPage/LogInAndSignInPage';
 
-// dashboard pages
+// dashboard
+import Dashboard from './Pages/Dashboard/Dashboard';
 import MusicUploadPage from './Pages/MusicUploadPage/MusicUploadPage';
+import DashBoardMusicUploadComponent from './DashBordComponents/DashBoardMusicUploadComponent/DashBoardMusicUploadComponent';
 
 function App() {
     const dispatch = useDispatch();
@@ -42,8 +44,8 @@ function App() {
                     <Route path="forget-password" element={<ForgetPasswordComponent />} />
                     <Route path="reset-password/:id" element={<ResetPasswordComponent />} />
                 </Route>
-                <Route path="/dashboard">
-                    <Route path="upload-music" element={<MusicUploadPage />} />
+                <Route path="/admin/dashboard" element={<Dashboard />}>
+                    <Route path="upload-music" element={<DashBoardMusicUploadComponent />} />
                 </Route>
             </Routes>
         </div>

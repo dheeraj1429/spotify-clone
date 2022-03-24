@@ -6,6 +6,7 @@ const initalState = {
     ShowProfilePopUp: false,
     UploadMusicStatus: null,
     AllMusicList: null,
+    FileUploadData: null,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -44,6 +45,12 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 AllMusicList: action.payload,
+            };
+
+        case ACTION_TYPE.FILE_UPLOAD_VALUE:
+            return {
+                ...state,
+                FileUploadData: action.payload,
             };
 
         default:

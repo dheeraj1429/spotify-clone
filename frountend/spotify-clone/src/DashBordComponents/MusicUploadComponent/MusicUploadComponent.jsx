@@ -7,6 +7,7 @@ import MusicTextAriaComponent from '../MusicTextAriaComponent/MusicTextAriaCompo
 import MusicSelectCartComponent from '../MusicSelectCartComponent/MusicSelectCartComponent';
 import { useDispatch } from 'react-redux';
 import { uploadMusic } from '../../Redux/Action/action';
+import axios from 'axios';
 
 import './MusicUploadComponent.css';
 
@@ -15,6 +16,7 @@ function MusicUploadComponent() {
     const [MusicFile, setMusicFile] = useState({
         file: '',
     });
+    const [FileUploadValue, setFileUploadValue] = useState(0);
     const [MusicUpload, setMusicUpload] = useState({
         songArtist: '',
         songName: '',
@@ -50,7 +52,18 @@ function MusicUploadComponent() {
         formData.append('discription', discription);
 
         if (file && songArtist && songName && songType) {
-            dispatch(uploadMusic(formData));
+            const config = {
+                onUploadProgress: (data) => {
+                    let uplodedValue = Math.round((100 * data.loaded) / data.total);
+                    setFileUploadValue(uplodedValue);
+
+                    if (uplodedValue === 100) {
+                        dispatch(uploadMusic('upload successful'));
+                    }
+                },
+            };
+
+            const musicRef = axios.post('/music/upload', formData, config);
         }
     };
 
@@ -121,6 +134,20 @@ function MusicUploadComponent() {
                                 change={changeHandler}
                                 name={'discription'}
                             />
+                            {FileUploadValue !== 0 ? (
+                                <div className="d-flex align-items-center">
+                                    <div className="upload_bar_div">
+                                        <div
+                                            className="upload_inner_div"
+                                            style={{
+                                                width: `${FileUploadValue}%`,
+                                            }}
+                                        ></div>
+                                    </div>
+                                    <p className="text-white mb-3 ms-3">{FileUploadValue}%</p>
+                                </div>
+                            ) : null}
+
                             <CustomButtonComponent
                                 innerText={'Upload'}
                                 elmClass={'uploadMusic'}

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const indexControllers = require('../controllers/indexControllers');
+const adminControllers = require('../controllers/adminControllers');
 const multer = require('multer');
 
 const uploadMusic = multer.diskStorage({
@@ -16,7 +16,7 @@ const uploadMusic = multer.diskStorage({
 
 const upload = multer({ storage: uploadMusic });
 
-router.post('/upload', upload.single('file'), indexControllers.uploadMusic);
-router.post('/getAllMusic', indexControllers.getAllMusic);
+router.post('/upload', upload.single('file'), adminControllers.uploadMusic);
+router.post('/getAllMusic', adminControllers.getAllMusic);
 
 module.exports = router;

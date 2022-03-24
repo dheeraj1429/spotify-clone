@@ -24,3 +24,24 @@
 .music_upload_elm {
     width: 500px;
 }
+
+.upload_bar_div {
+    width: 100%;
+    height: 5px;
+    background-color: var(--mainColor);
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload_bar_div .upload_inner_div {
+    position: absolute;
+    width: 20%;
+    background-color: var(--lightGreen);
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+}

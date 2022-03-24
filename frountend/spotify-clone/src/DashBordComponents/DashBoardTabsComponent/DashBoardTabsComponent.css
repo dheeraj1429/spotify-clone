@@ -1,0 +1,54 @@
+.dashboard_sm_card_div {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.dashboard_sm_card_div p {
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 0.7rem;
+    color: var(--sm_gray);
+    transition: all 0.3s ease;
+}
+.dashboard_sm_card_div i {
+    color: var(--sm_gray);
+    transition: all 0.3s ease;
+    font-size: 0.7rem;
+}
+.dashboard_cart_active {
+    background-color: var(--activeBrCl);
+    box-shadow: 0 0 8px var(--activeBrCl);
+}
+.dashboard_cart_active p {
+    color: var(--darkLightCl);
+}
+.dashboard_cart_active i {
+    color: var(--darkLightCl);
+}
+.tabs_options_div {
+    padding: 0.5rem;
+    overflow: hidden;
+    height: 0;
+}
+.tabs_options_div_active {
+    height: 100%;
+    overflow: hidden;
+}
+.tabs_options_div ul li {
+    list-style: none;
+    color: var(--grayLight);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0.9rem 0;
+    cursor: pointer;
+}
+.tabs_options_div ul li i {
+    margin-right: 0.5rem;
+}
+.tabs_options_div ul {
+    padding: 0 1.2rem;
+}

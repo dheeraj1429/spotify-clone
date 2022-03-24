@@ -104,21 +104,11 @@ export const showProfilePopup = function (data) {
     };
 };
 
-// upload music
+// // upload music
 export const uploadMusic = function (data) {
-    return async function (dispatch) {
-        try {
-            const musicRef = await axios.post('/music/upload', data, { headers });
-
-            if (musicRef) {
-                dispatch({
-                    type: ACTION_TYPE.MUSIC_UPLOAD_INFO,
-                    payload: musicRef.data,
-                });
-            }
-        } catch (err) {
-            console.log(err);
-        }
+    return {
+        type: ACTION_TYPE.FILE_UPLOAD_VALUE,
+        payload: data,
     };
 };
 

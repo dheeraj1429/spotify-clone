@@ -18,5 +18,6 @@ Backend - nodejs.
     b - when the uploading is done redirect user into the home page. -> done
     c - show to uploaded music file. -> done
     d - user can also play the music by clicking in the play button. -> panding..
+    e - when uploading music file show the progress bar.
 6 - music play. -> panding..
     a - user can play the music -> panding..
