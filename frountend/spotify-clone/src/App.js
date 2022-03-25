@@ -17,7 +17,6 @@ import LogInAndSignInPage from './Pages/LoginAndSignInPage/LogInAndSignInPage';
 
 // dashboard
 import Dashboard from './Pages/Dashboard/Dashboard';
-import MusicUploadPage from './Pages/MusicUploadPage/MusicUploadPage';
 import DashBoardMusicUploadComponent from './DashBordComponents/DashBoardMusicUploadComponent/DashBoardMusicUploadComponent';
 
 function App() {

@@ -9,7 +9,6 @@ function MusicSelectCartComponent({ name, change }) {
             </div>
             <div className="file_upload_select_op">
                 <input type="file" name={name} onChange={change} />
-                <p>Select File</p>
             </div>
         </div>
     );
