@@ -6,7 +6,6 @@ import MusicTextAriaComponent from '../MusicTextAriaComponent/MusicTextAriaCompo
 import { useDispatch } from 'react-redux';
 import MusicSelectCartComponent from '../MusicSelectCartComponent/MusicSelectCartComponent';
 import axios from 'axios';
-import { uploadMusic } from '../../Redux/Action/action';
 import CustomButtonComponent from '../../Components/CustomButtonComponent/CustomButtonComponent';
 
 import './DashBoardMusicUploadComponent.css';
@@ -15,6 +14,7 @@ function DashBoardMusicUploadComponent() {
     const dispatch = useDispatch();
     const [MusicFile, setMusicFile] = useState({
         file: '',
+        coverImage: '',
     });
     const [FileUploadValue, setFileUploadValue] = useState(0);
     const [MusicUpload, setMusicUpload] = useState({
@@ -34,7 +34,9 @@ function DashBoardMusicUploadComponent() {
 
     const changeMusicFileHandler = function (e) {
         const data = e.target.files[0];
-        setMusicFile({ file: data });
+        const name = e.target.name;
+
+        setMusicFile({ ...MusicFile, [name]: data });
     };
 
     const sendData = function (e) {
@@ -42,29 +44,25 @@ function DashBoardMusicUploadComponent() {
 
         const { songArtist, songName, songType, tags, discription } = MusicUpload;
         const file = MusicFile.file;
+        const image = MusicFile.coverImage;
 
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('image', image);
         formData.append('songArtist', songArtist);
         formData.append('songName', songName);
         formData.append('songType', songType);
         formData.append('tags', tags);
         formData.append('discription', discription);
 
-        if (file && songArtist && songName && songType) {
-            const config = {
-                onUploadProgress: (data) => {
-                    let uplodedValue = Math.round((100 * data.loaded) / data.total);
-                    setFileUploadValue(uplodedValue);
+        const config = {
+            onUploadProgress: (data) => {
+                let uplodedValue = Math.round((100 * data.loaded) / data.total);
+                setFileUploadValue(uplodedValue);
+            },
+        };
 
-                    if (uplodedValue === 100) {
-                        dispatch(uploadMusic('upload successful'));
-                    }
-                },
-            };
-
-            const musicRef = axios.post('/music/upload', formData, config);
-        }
+        const musicRef = axios.post('/music/upload', formData, config);
     };
 
     const resetSettings = function () {
@@ -89,11 +87,28 @@ function DashBoardMusicUploadComponent() {
 
             <div className="upload_section_div">
                 <form action="" onSubmit={sendData}>
-                    <MusicSelectCartComponent
-                        name={'file'}
-                        change={changeMusicFileHandler}
-                        value={MusicFile.file}
-                    />
+                    <div className="d-flex">
+                        <div className="w-75">
+                            <MusicSelectCartComponent
+                                name={'file'}
+                                change={changeMusicFileHandler}
+                                value={MusicFile.file}
+                                ic={'fas fa-music'}
+                            />
+                            {MusicFile.file ? <p className="mt-2">{MusicFile.file.name}</p> : null}
+                        </div>
+                        <div className="w-25 ps-3">
+                            <MusicSelectCartComponent
+                                name={'coverImage'}
+                                change={changeMusicFileHandler}
+                                value={MusicFile.coverImage}
+                                ic={'fas fa-image'}
+                            />
+                            {MusicFile.coverImage ? (
+                                <p className="mt-2">{MusicFile.coverImage.name}</p>
+                            ) : null}
+                        </div>
+                    </div>
 
                     {FileUploadValue !== 0 ? (
                         <div className="d-flex align-items-center mt-3 mb-2">
@@ -143,7 +158,7 @@ function DashBoardMusicUploadComponent() {
                                         { el: 'Funk' },
                                         { el: 'Pop Music' },
                                         { el: 'Trap' },
-                                        { el: 'futer bass' },
+                                        { el: 'future bass' },
                                         { el: 'Chill' },
                                         { el: 'Dance music' },
                                         { el: 'Jazz' },

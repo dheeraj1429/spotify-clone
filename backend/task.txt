@@ -1,23 +1,33 @@
+----------------------------------------------------------------------------------------
+Admin Tasks.
+
+DashBoard -> admin
+    1 - music upload. -> panding..
+        a - upload the music file and data informations. done ✔️
+        b - admin can edit the uploaded music data.
+        c - admin can change the music informations, images, path, other data.
+        d - admin can delete the music file.
+        e - when uploading music file show the progress bar. done ✔️
+        f - admin upload song with cover image and store into the database. done ✔️
+
+
+
+-----------------------------------------------------------------------------------------
+
+Backend nodejs Tasks
+
 Backend - nodejs.
 1 - user sign up. -> done
-    a - user password hashing. -> done
-    b - user sign up token genrate. -> done
-2 - user login. -> done
-    a - user login with sign up account. -> done
-    b - genrate user token when the user login. -> done
-3 - reset password. -> done
-    a - user can reset the password by using the email address. -> done
-    b - user can reset the password using the email & gmail. -> done
-    c - user new password store into the user password collection. -> done
-    d - genrate hashing password (new password). -> done
-    e - when the user change the password then user can only login with new password. -> done
-4 - user logout. -> done
-    a - user can logout. -> done
-5 - music upload. -> panding..
-    a - user can upload the music file, tracks... -> done
-    b - when the uploading is done redirect user into the home page. -> done
-    c - show to uploaded music file. -> done
-    d - user can also play the music by clicking in the play button. -> panding..
-    e - when uploading music file show the progress bar.
-6 - music play. -> panding..
-    a - user can play the music -> panding..
+    a - user password hashing. -> done ✔️
+    b - user sign up token genrate. -> done ✔️
+2 - user login. -> done ✔️
+    a - user login with sign up account. -> done ✔️
+    b - genrate user token when the user login. -> done ✔️
+3 - reset password. -> done ✔️
+    a - user can reset the password by using the email address. -> done ✔️
+    b - user can reset the password using the email & gmail. -> done ✔️
+    c - user new password store into the user password collection. -> done ✔️
+    d - genrate hashing password (new password). -> done ✔️
+    e - when the user change the password then user can only login with new password. -> done ✔️
+4 - user logout. -> done ✔️
+    a - user can logout. -> done ✔️

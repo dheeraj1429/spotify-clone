@@ -13,22 +13,24 @@ function DashBoardSideBarComponent() {
 
     return (
         <div className="dashboard_side_bar_div">
-            <DashBoardTabsComponent
-                data={'dashboard'}
-                action={activeHandler}
-                dataTarget={ActiveBar}
-                headingData={'Dashboard'}
-                elm={[{ el: 'Defaul' }, { el: 'Ecommerce' }, { el: 'Crypto' }]}
-                icon={'fas fa-house'}
-            />
-            <DashBoardTabsComponent
-                data={'Music'}
-                action={activeHandler}
-                dataTarget={ActiveBar}
-                headingData={'Music'}
-                icon={'fas fa-headphones-alt'}
-                elm={[{ el: 'upload music', ic: 'fas fa-upload' }]}
-            />
+            <div className="dashboard_sidebar_inner_div stikcy_div">
+                <DashBoardTabsComponent
+                    data={'dashboard'}
+                    action={activeHandler}
+                    dataTarget={ActiveBar}
+                    headingData={'Dashboard'}
+                    elm={[{ el: 'Defaul' }, { el: 'Ecommerce' }, { el: 'Crypto' }]}
+                    icon={'fas fa-house'}
+                />
+                <DashBoardTabsComponent
+                    data={'Music'}
+                    action={activeHandler}
+                    dataTarget={ActiveBar}
+                    headingData={'Music'}
+                    icon={'fas fa-headphones-alt'}
+                    elm={[{ el: 'upload music', ic: 'fas fa-upload' }]}
+                />
+            </div>
         </div>
     );
 }
