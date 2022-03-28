@@ -129,3 +129,11 @@ export const getAllMusic = function () {
         }
     };
 };
+
+// selected music
+export const selectedMusic = function (data) {
+    return {
+        type: ACTION_TYPE.SELECTED_MUSIC,
+        payload: data,
+    };
+};

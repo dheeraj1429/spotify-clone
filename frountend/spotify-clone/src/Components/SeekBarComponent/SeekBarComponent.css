@@ -1,0 +1,46 @@
+.music_info_div input[type='range'] {
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.music_info_div input[type='range']:focus {
+    outline: none;
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+/* 2.1 THUMB */
+
+.music_info_div input[type='range']::-webkit-slider-thumb {
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #333;
+    border-radius: 50%;
+    margin-top: -9px;
+}
+
+.music_info_div input[type='range']::-moz-range-thumb {
+    background-color: #555;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #333;
+    border-radius: 50%;
+}
+
+.music_info_div input[type='range']::-ms-thumb {
+    background-color: #555;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #333;
+    border-radius: 50%;
+}
+/* 2.2 TRACK */
+
+input[type='range']::-webkit-slider-runnable-track {
+    background-color: var(--grayLight);
+    height: 2px;
+}

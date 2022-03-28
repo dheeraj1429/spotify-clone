@@ -5,25 +5,29 @@
     transition: all 0.3s ease;
     position: relative;
     margin: 0 0.5rem;
+    background-color: var(--grayColor);
+    margin-bottom: 1.5rem;
 }
 
 .music_cart_image_div {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .musicPlayButton {
     width: 60px;
     height: 60px;
     border: 50%;
-    background-color: var(--grayColor);
+    background-color: var(--lightGreen);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    right: 20px;
+    bottom: 20px;
     opacity: 0;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -34,33 +38,27 @@
 }
 
 .musicPlayButton i {
-    color: var(--lightWhite);
+    color: var(--mainColor);
 }
 
-.Music_cart_div img {
-    width: auto;
+.card_bg_imag {
+    width: 200px;
     height: 200px;
-    z-index: 10;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .music_cart_contnet {
-    margin-top: -60px;
-    z-index: -1;
     transition: all 0.4s ease;
-    opacity: 0;
 }
 
 .Music_cart_div:hover .music_cart_contnet {
-    margin-top: 0;
     opacity: 1;
 }
 
 .Music_cart_div:hover .musicPlayButton {
     opacity: 1;
-}
-
-.Music_cart_div:hover {
-    background-color: var(--grayColor);
 }
 
 .all_music_list_cart h1 {

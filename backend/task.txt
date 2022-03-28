@@ -1,3 +1,9 @@
+music prev button and next button. done ✔️
+when the user click on the card play button then play the music. done ✔️
+when the user click on the music card button then play the selected music. done ✔️
+set the progress bar 0 if the user click on the play button.
+repeat button and random songs button.
+
 ----------------------------------------------------------------------------------------
 Admin Tasks.
 
@@ -9,8 +15,6 @@ DashBoard -> admin
         d - admin can delete the music file.
         e - when uploading music file show the progress bar. done ✔️
         f - admin upload song with cover image and store into the database. done ✔️
-
-
 
 -----------------------------------------------------------------------------------------
 

@@ -4,10 +4,11 @@ const songs = require('../model/music');
 const uploadMusic = async function (req, res, next) {
     try {
         const file = req.files;
-        console.log(req.body);
 
         const songPath = file[0].path;
         const coverImagePath = file[1].path;
+        const songUploadName = file[0].originalname;
+        const coverImageUploadName = file[1].originalname;
 
         const { songArtist, songName, songType, tags, discription } = req.body;
 
@@ -15,8 +16,8 @@ const uploadMusic = async function (req, res, next) {
             const insertSongs = await new songs({
                 name: songName,
                 songArtist: songArtist,
-                musicPath: songPath,
-                songCover: coverImagePath,
+                musicPath: songUploadName,
+                songCover: coverImageUploadName,
                 songType: songType,
                 tags: tags,
                 discription: discription,

@@ -1,0 +1,16 @@
+.play_div_cart_info {
+    width: 70px;
+    height: 70px;
+    background-position: center;
+    background-size: cover;
+}
+.play_div_cart_contnet {
+    color: var(--mainColor);
+}
+.play_div_cart_contnet h5 {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.play_div_cart_contnet p {
+    font-size: 12px;
+}

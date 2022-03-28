@@ -1,14 +1,14 @@
 .all_music_div {
     width: 100%;
-    height: 90%;
+    height: 860px;
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(34, 34, 34, 1) 73%);
     padding: 1rem;
-    overflow-x: hidden;
+    overflow: scroll;
 }
 
 .all_music_div::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
 }
 
 /* Track */
@@ -32,7 +32,7 @@
 .all_music_banner_div {
     width: 100%;
     height: 300px;
-    background-image: url('/public/images/bg-2.jpg');
+    background-image: url('/public/images/1469760.png');
     background-position: center;
     background-size: cover;
 }

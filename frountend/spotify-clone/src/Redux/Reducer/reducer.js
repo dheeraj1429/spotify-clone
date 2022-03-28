@@ -7,6 +7,7 @@ const initalState = {
     UploadMusicStatus: null,
     AllMusicList: null,
     FileUploadData: null,
+    SelectedMusic: null,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -51,6 +52,12 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 FileUploadData: action.payload,
+            };
+
+        case ACTION_TYPE.SELECTED_MUSIC:
+            return {
+                ...state,
+                SelectedMusic: action.payload,
             };
 
         default:
