@@ -8,6 +8,7 @@ const initalState = {
     AllMusicList: null,
     FileUploadData: null,
     SelectedMusic: null,
+    IsPlay: false,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -58,6 +59,12 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 SelectedMusic: action.payload,
+            };
+
+        case ACTION_TYPE.ISPLAY:
+            return {
+                ...state,
+                IsPlay: action.payload,
             };
 
         default:

@@ -7,19 +7,20 @@ import {
     pauseMusic,
     ChangePrev,
     ChangeToNext,
-    autoPlayMusic,
     dataAboutAudio,
 } from './MusicHandler';
 import SeekBarComponent from '../SeekBarComponent/SeekBarComponent';
+import { isPlayHandler } from '../../Redux/Action/action';
 
 import './MusicControllersComponent.css';
 
 function MusicControllersComponent({ data, musicAllData }) {
     const dispatch = useDispatch();
     const selector = useSelector((state) => state.userStoreData.SelectedMusic);
+    const IsPlay = useSelector((state) => state.userStoreData.IsPlay);
 
     const [AllMusic, setAllMusic] = useState(null);
-    const [IsPlay, setIsPlay] = useState(false);
+    // const [IsPlay, setIsPlay] = useState(false);
     const [MusicDuration, setMusicDuration] = useState(0);
     const [MusicCurrentTime, setMusicCurrentTime] = useState(0);
     const [CurrentMusicElm, setCurrentMusicElm] = useState(0);
@@ -51,10 +52,13 @@ function MusicControllersComponent({ data, musicAllData }) {
     // song play and pause function
     const PlaySongHandler = function (e) {
         const target = e.currentTarget;
-        if (!IsPlay) {
-            playMusic(target, setIsPlay, audioElmDiv);
+
+        if (IsPlay === false) {
+            playMusic(target, IsPlay, audioElmDiv);
+            dispatch(isPlayHandler(true));
         } else {
-            pauseMusic(target, setIsPlay, audioElmDiv);
+            pauseMusic(target, IsPlay, audioElmDiv);
+            dispatch(isPlayHandler(false));
         }
     };
 
@@ -62,21 +66,32 @@ function MusicControllersComponent({ data, musicAllData }) {
     const ChangeToNextHandler = function () {
         // if the user click on the next button then change song to next and auto play the music
         ChangePrev(CurrentMusicElm, AllMusic, setCurrentMusicElm);
-        autoPlayMusic(audioElmDiv, setIsPlay, playButton);
+        // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
+        playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
     };
 
     // change songe to next current song + next
     const ChangeToPrevHandler = function () {
         // if the user click on the prev button then change song to next and auto play the music
         ChangeToNext(CurrentMusicElm, AllMusic, setCurrentMusicElm);
-        autoPlayMusic(audioElmDiv, setIsPlay, playButton);
+        // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
+        playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
     };
 
     // songs duration handler
     const ChangeRangeHandler = function (e) {
+        // set the range value to audio duration then controll the aduio aurrent time with the range value.
         e.target.max = audioElmDiv.duration;
         const value = e.target.value;
         audioElmDiv.currentTime = value;
+    };
+
+    const CheckAudioPlaying = function () {
+        playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
+    };
+
+    const CheckAudioPause = function () {
+        pauseMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
     };
 
     useEffect(() => {
@@ -87,12 +102,13 @@ function MusicControllersComponent({ data, musicAllData }) {
 
     useEffect(() => {
         if (audioElmDiv) {
-            playMusic(playButton, setIsPlay, audioElmDiv);
+            playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         }
 
         if (selector) {
             const selectedMusicCard = musicAllData.findIndex((el) => el._id === selector._id);
             setCurrentMusicElm(selectedMusicCard);
+            dispatch(isPlayHandler(true));
         }
     }, [selector]);
 
@@ -113,6 +129,12 @@ function MusicControllersComponent({ data, musicAllData }) {
                             className="audio_div_elm"
                             onLoadedData={handleLoadMetadata}
                             onTimeUpdate={getDataAboutMusic}
+                            onPlaying={CheckAudioPlaying}
+                            onPause={CheckAudioPause}
+                            allow="autoplay"
+                            preload="none"
+                            webkit-playsinline="true"
+                            playsinline="true"
                         ></audio>
                     ) : musicAllData ? (
                         <audio

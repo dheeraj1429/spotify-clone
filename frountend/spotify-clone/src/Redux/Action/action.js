@@ -137,3 +137,11 @@ export const selectedMusic = function (data) {
         payload: data,
     };
 };
+
+// play music
+export const isPlayHandler = function (data) {
+    return {
+        type: ACTION_TYPE.ISPLAY,
+        payload: data,
+    };
+};

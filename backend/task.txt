@@ -1,7 +1,33 @@
+---------------------------------------------------------------------------------------
+
+All Bugs
+
+bugs fix.
+when the audio array last object data is playing then reset first songe. done ✔️
+prev and next buttons is not working. done ✔️
+songs card images is not showing. done ✔️
+when the user click on the side bar active icons we cant's see the active icons. done ✔️
+user can upload songs with cover image. done ✔️
+
+
+bugs.
+when the aap load first the preview music image is not showing.
+when the app load first the audio progress bar stick middle.
+user can controlle the play button with music cart play button.
+auto play when the songs is end jump to the next song.
+when the user click on the cart music button then puse auto play and user can play and pause with play icon.
+repeat and random button not working.
+
+
+
+
+---------------------------------------------------------------------------------------
+
 music prev button and next button. done ✔️
 when the user click on the card play button then play the music. done ✔️
 when the user click on the music card button then play the selected music. done ✔️
 set the progress bar 0 if the user click on the play button.
+when the user click on the music card play button then show the pause button, and show same like play and pause in audio controllers elements.
 repeat button and random songs button.
 
 ----------------------------------------------------------------------------------------
