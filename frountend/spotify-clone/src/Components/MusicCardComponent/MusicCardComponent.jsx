@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectedMusic, isPlayHandler } from '../../Redux/Action/action';
+import {
+    selectedMusic,
+    isPlayHandler,
+    playButtonCartELm,
+    prevImageInfoHandler,
+} from '../../Redux/Action/action';
+
 import './MusicCardComponent.css';
 
 function MusicCardComponent({ data }) {
     const dispatch = useDispatch();
+    const [CurrentCartPlay, setCurrentCartPlay] = useState(null);
     const IsPlay = useSelector((state) => state.userStoreData.IsPlay);
+    const IdSelector = useSelector((state) => state.userStoreData.CartButtonElm);
 
     const sendData = function () {
         dispatch(selectedMusic(data));
     };
+
+    const PlayAndPauseHandler = function (event) {
+        dispatch(isPlayHandler(!IsPlay));
+        dispatch(playButtonCartELm(data._id));
+        dispatch(prevImageInfoHandler(`http://localhost:8000//CoverImage/${data.songCover}`));
+    };
+
+    useEffect(() => {
+        if (IdSelector) {
+            setCurrentCartPlay(IdSelector);
+        }
+    }, [IdSelector]);
 
     return (
         <div className="Music_cart_div text-center">
@@ -20,8 +40,28 @@ function MusicCardComponent({ data }) {
                         backgroundImage: `url(http://localhost:8000//CoverImage/${data.songCover})`,
                     }}
                 ></div>
-                <div className="musicPlayButton" onClick={sendData}>
-                    <i class="fas fa-play"></i>
+                <div
+                    className="musicPlayButton"
+                    style={
+                        CurrentCartPlay === data._id
+                            ? {
+                                  opacity: 1,
+                              }
+                            : null
+                    }
+                    onClick={(e) => {
+                        sendData();
+                        PlayAndPauseHandler(e);
+                    }}
+                    data-target={data._id}
+                >
+                    <i
+                        class={
+                            IsPlay === true && IdSelector === data._id
+                                ? 'fas fa-pause'
+                                : 'fas fa-play'
+                        }
+                    ></i>
                 </div>
             </div>
             <div className="music_cart_contnet">

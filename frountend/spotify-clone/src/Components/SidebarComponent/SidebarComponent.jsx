@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import SideBarSmOptionComponent from '../SideBarSmOptionComponent/SideBarSmOptionComponent';
+import MusicPrevImageComponent from '../MusicPrevImageComponent/MusicPrevImageComponent';
 
 import './SidebarComponent.css';
 
 function SidebarComponent() {
-    const [ActiveSideBar, setActiveSideBar] = useState('');
+    const [ActiveSideBar, setActiveSideBar] = useState('Home');
 
     const ActiveELm = function (e) {
         const target = e.currentTarget;
@@ -15,6 +16,7 @@ function SidebarComponent() {
 
     return (
         <div className="side_bar_div">
+            <MusicPrevImageComponent />
             <div className="side_bar_inner_div">
                 <i class="fas fa-ellipsis-h"></i>
 

@@ -9,6 +9,9 @@ const initalState = {
     FileUploadData: null,
     SelectedMusic: null,
     IsPlay: false,
+    CartButtonElm: null,
+    ShowMusicPrevCart: false,
+    PrevImageInfo: null,
 };
 
 const userReducer = function (state = initalState, action) {
@@ -65,6 +68,24 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 IsPlay: action.payload,
+            };
+
+        case ACTION_TYPE.CART_PLAY_BUTTON:
+            return {
+                ...state,
+                CartButtonElm: action.payload,
+            };
+
+        case ACTION_TYPE.SHOW_MUSIC_CART_PREV:
+            return {
+                ...state,
+                ShowMusicPrevCart: action.payload,
+            };
+
+        case ACTION_TYPE.PREV_IMAGE_INFO:
+            return {
+                ...state,
+                PrevImageInfo: action.payload,
             };
 
         default:

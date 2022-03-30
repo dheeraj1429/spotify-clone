@@ -3,6 +3,11 @@
     height: 100vh;
     background-color: var(--dark);
     padding: 1.5rem;
+    position: relative;
+}
+
+.side_bar_inner_div {
+    position: relative;
 }
 
 .side_bar_inner_div i {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectedMusic } from '../../Redux/Action/action';
+import { selectedMusic, playButtonCartELm } from '../../Redux/Action/action';
 import {
     musicInfoData,
     playMusic,
@@ -10,17 +10,18 @@ import {
     dataAboutAudio,
 } from './MusicHandler';
 import SeekBarComponent from '../SeekBarComponent/SeekBarComponent';
-import { isPlayHandler } from '../../Redux/Action/action';
+import { isPlayHandler, prevImageInfoHandler } from '../../Redux/Action/action';
 
 import './MusicControllersComponent.css';
 
 function MusicControllersComponent({ data, musicAllData }) {
     const dispatch = useDispatch();
+
     const selector = useSelector((state) => state.userStoreData.SelectedMusic);
     const IsPlay = useSelector((state) => state.userStoreData.IsPlay);
+    const ShowMusicPrevCart = useSelector((state) => state.userStoreData.ShowMusicPrevCart);
 
     const [AllMusic, setAllMusic] = useState(null);
-    // const [IsPlay, setIsPlay] = useState(false);
     const [MusicDuration, setMusicDuration] = useState(0);
     const [MusicCurrentTime, setMusicCurrentTime] = useState(0);
     const [CurrentMusicElm, setCurrentMusicElm] = useState(0);
@@ -68,6 +69,14 @@ function MusicControllersComponent({ data, musicAllData }) {
         ChangePrev(CurrentMusicElm, AllMusic, setCurrentMusicElm);
         // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
+        // if the user change the music then store the next music id. for handling the current music card
+        dispatch(playButtonCartELm(musicAllData[CurrentMusicElm + 1]._id));
+        // set the prev image by clicking on the next button
+        dispatch(
+            prevImageInfoHandler(
+                `http://localhost:8000//CoverImage/${musicAllData[CurrentMusicElm + 1].songCover}`
+            )
+        );
     };
 
     // change songe to next current song + next
@@ -76,6 +85,12 @@ function MusicControllersComponent({ data, musicAllData }) {
         ChangeToNext(CurrentMusicElm, AllMusic, setCurrentMusicElm);
         // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
+        dispatch(playButtonCartELm(musicAllData[CurrentMusicElm - 1]._id));
+        dispatch(
+            prevImageInfoHandler(
+                `http://localhost:8000//CoverImage/${musicAllData[CurrentMusicElm - 1].songCover}`
+            )
+        );
     };
 
     // songs duration handler
@@ -86,12 +101,15 @@ function MusicControllersComponent({ data, musicAllData }) {
         audioElmDiv.currentTime = value;
     };
 
+    // checking the audio is playing or note
     const CheckAudioPlaying = function () {
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
+        dispatch(isPlayHandler(true));
     };
 
     const CheckAudioPause = function () {
         pauseMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
+        dispatch(isPlayHandler(false));
     };
 
     useEffect(() => {
@@ -101,16 +119,22 @@ function MusicControllersComponent({ data, musicAllData }) {
     }, [CurrentMusicElm]);
 
     useEffect(() => {
-        if (audioElmDiv) {
-            playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
-        }
-
         if (selector) {
             const selectedMusicCard = musicAllData.findIndex((el) => el._id === selector._id);
             setCurrentMusicElm(selectedMusicCard);
             dispatch(isPlayHandler(true));
         }
     }, [selector]);
+
+    useEffect(() => {
+        if (audioElmDiv) {
+            if (IsPlay === true) {
+                playMusic(playButton, IsPlay, audioElmDiv);
+            } else {
+                pauseMusic(playButton, IsPlay, audioElmDiv);
+            }
+        }
+    }, [IsPlay]);
 
     useEffect(() => {
         if (data || musicAllData) {

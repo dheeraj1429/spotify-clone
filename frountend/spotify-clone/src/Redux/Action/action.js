@@ -145,3 +145,26 @@ export const isPlayHandler = function (data) {
         payload: data,
     };
 };
+
+// handler for music card buttons
+export const playButtonCartELm = function (data) {
+    return {
+        type: ACTION_TYPE.CART_PLAY_BUTTON,
+        payload: data,
+    };
+};
+
+// show the music prev card
+export const showTheMusicPrev = function (data) {
+    return {
+        type: ACTION_TYPE.SHOW_MUSIC_CART_PREV,
+        payload: data,
+    };
+};
+
+export const prevImageInfoHandler = function (data) {
+    return {
+        type: ACTION_TYPE.PREV_IMAGE_INFO,
+        payload: data,
+    };
+};

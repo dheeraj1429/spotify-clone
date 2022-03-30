@@ -1,26 +1,3 @@
-// const autoPlay = async function (audio) {
-//     try {
-//         const playPromise = await audio.play();
-
-//         if (playPromise) {
-//             console.log(playPromise);
-//         }
-//     } catch (err) {
-//         console.log(err);
-//     }
-
-//     // // auto play music
-//     // if (playPromise !== undefined) {
-//     //     playPromise
-//     //         .then((result) => {
-//     //             audio.play();
-//     //         })
-//     //         .catch((err) => {
-//     //             console.log(err);
-//     //         });
-//     // }
-// };
-
 // set the current time and current song duration
 // calculate the current time and the song duration and convert into the the minutes and seconds.
 // if the song length ( duration ) is more then 60 minutes above then convert the songs duration like 1:00:00;

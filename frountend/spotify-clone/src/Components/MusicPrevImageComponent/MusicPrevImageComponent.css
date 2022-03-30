@@ -1,0 +1,16 @@
+.Music_prev_image_div {
+    position: absolute;
+    width: 80%;
+    height: 0%;
+    left: 30px;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.Music_prev_image_div_active {
+    height: 25%;
+    bottom: 15%;
+}
