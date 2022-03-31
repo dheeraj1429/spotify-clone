@@ -11,13 +11,13 @@ user can upload songs with cover image. done ✔️
 when the user click on the cart music button then puse auto play and user can play and pause with play icon. done ✔️
 target the current cart and show the play button stikcy. done ✔️
 when the app load first the audio progress bar stick middle. done ✔️
+when the user click on the music card button then all music cards button changes fix it. done ✔️
 
 bugs.
 when the aap load first the preview music image is not showing.
 user can controlle the play button with music cart play button.
 auto play when the songs is end jump to the next song.
 repeat and random button not working.
-when the user click on the music card button then all music cards button changes fix it.
 
 ---------------------------------------------------------------------------------------
 

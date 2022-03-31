@@ -10,21 +10,21 @@ import {
     dataAboutAudio,
 } from './MusicHandler';
 import SeekBarComponent from '../SeekBarComponent/SeekBarComponent';
+import { backEndUrl } from '../../Util/Info';
 import { isPlayHandler, prevImageInfoHandler } from '../../Redux/Action/action';
 
 import './MusicControllersComponent.css';
 
 function MusicControllersComponent({ data, musicAllData }) {
     const dispatch = useDispatch();
-
     const selector = useSelector((state) => state.userStoreData.SelectedMusic);
     const IsPlay = useSelector((state) => state.userStoreData.IsPlay);
-    const ShowMusicPrevCart = useSelector((state) => state.userStoreData.ShowMusicPrevCart);
 
     const [AllMusic, setAllMusic] = useState(null);
     const [MusicDuration, setMusicDuration] = useState(0);
     const [MusicCurrentTime, setMusicCurrentTime] = useState(0);
     const [CurrentMusicElm, setCurrentMusicElm] = useState(0);
+    const [BackEndUrl, setBackEndUrl] = useState(null);
 
     // grab the aduio element
     const audioElmDiv = document.querySelector('.audio_div_elm');
@@ -70,11 +70,20 @@ function MusicControllersComponent({ data, musicAllData }) {
         // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         // if the user change the music then store the next music id. for handling the current music card
-        dispatch(playButtonCartELm(musicAllData[CurrentMusicElm + 1]._id));
+        dispatch(
+            playButtonCartELm(
+                musicAllData[CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1]
+                    ._id
+            )
+        );
         // set the prev image by clicking on the next button
         dispatch(
             prevImageInfoHandler(
-                `http://localhost:8000//CoverImage/${musicAllData[CurrentMusicElm + 1].songCover}`
+                `${BackEndUrl ? BackEndUrl : null}/CoverImage/${
+                    musicAllData[
+                        CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1
+                    ].songCover
+                }`
             )
         );
     };
@@ -85,10 +94,19 @@ function MusicControllersComponent({ data, musicAllData }) {
         ChangeToNext(CurrentMusicElm, AllMusic, setCurrentMusicElm);
         // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
-        dispatch(playButtonCartELm(musicAllData[CurrentMusicElm - 1]._id));
+        dispatch(
+            playButtonCartELm(
+                musicAllData[CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1]
+                    ._id
+            )
+        );
         dispatch(
             prevImageInfoHandler(
-                `http://localhost:8000//CoverImage/${musicAllData[CurrentMusicElm - 1].songCover}`
+                `${BackEndUrl ? BackEndUrl : null}/CoverImage/${
+                    musicAllData[
+                        CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1
+                    ].songCover
+                }`
             )
         );
     };
@@ -142,13 +160,17 @@ function MusicControllersComponent({ data, musicAllData }) {
         }
     }, [data]);
 
+    useEffect(() => {
+        setBackEndUrl(backEndUrl);
+    }, []);
+
     return (
         <>
             <div className="music_controoles_div show_music_controlles">
                 <div className="d-flex justify-content-center">
                     {selector ? (
                         <audio
-                            src={`http://localhost:8000//music/${selector.musicPath}`}
+                            src={`${BackEndUrl ? BackEndUrl : null}/music/${selector.musicPath}`}
                             controls
                             className="audio_div_elm"
                             onLoadedData={handleLoadMetadata}
@@ -162,7 +184,9 @@ function MusicControllersComponent({ data, musicAllData }) {
                         ></audio>
                     ) : musicAllData ? (
                         <audio
-                            src={`http://localhost:8000//music/${musicAllData[0].musicPath}`}
+                            src={`${BackEndUrl ? BackEndUrl : null}/music/${
+                                musicAllData[0].musicPath
+                            }`}
                             controls
                             className="audio_div_elm"
                             onLoadedData={handleLoadMetadata}
