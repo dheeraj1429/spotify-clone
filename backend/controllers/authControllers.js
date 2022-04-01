@@ -1,11 +1,11 @@
-const User = require('../model/userModel');
-const bcryptjs = require('bcryptjs');
-const nodemailer = require('nodemailer');
-const cart = require('../cart');
-const fs = require('fs');
-const rootFolder = require('../util/rootFolder');
-const path = require('path');
-const jwt = require('jsonwebtoken');
+const User = require("../model/userModel");
+const bcryptjs = require("bcryptjs");
+const nodemailer = require("nodemailer");
+const cart = require("../cart");
+const fs = require("fs");
+const rootFolder = require("../util/rootFolder");
+const path = require("path");
+const jwt = require("jsonwebtoken");
 
 // user signUp => Post
 const userSignUp = async function (req, res, next) {
@@ -29,7 +29,7 @@ const userSignUp = async function (req, res, next) {
                 if (userRef) {
                     return res.status(201).json({
                         success: true,
-                        message: 'user signup successful',
+                        message: "user signup successful",
                         name: userRef.name,
                         email: userRef.email,
                         admin: userRef.isAdmin,
@@ -39,7 +39,7 @@ const userSignUp = async function (req, res, next) {
             } else {
                 res.status(400).json({
                     success: false,
-                    message: 'there is some problem!!!',
+                    message: "there is some problem!!!",
                 });
             }
         }
@@ -65,7 +65,7 @@ const userLogin = async function (req, res, next) {
             if (passwordVarif) {
                 return res.status(200).json({
                     success: true,
-                    message: 'login successfull',
+                    message: "login successfull",
                     name: findUserRef.name,
                     email: findUserRef.email,
                     admin: findUserRef.isAdmin,
@@ -74,13 +74,13 @@ const userLogin = async function (req, res, next) {
             } else {
                 return res.status(200).json({
                     success: false,
-                    message: 'password is worng',
+                    message: "password is worng",
                 });
             }
         } else {
             return res.status(200).json({
                 success: false,
-                message: 'no use find!!',
+                message: "no use find!!",
             });
         }
     } catch (err) {
@@ -105,46 +105,42 @@ const forgetPassword = async function (req, res, next) {
                 cart.KEY
             );
 
-            fs.readFile(
-                path.join(rootFolder, 'views', 'tamplates', 'mail.ejs'),
-                'utf-8',
-                function (err, data) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        const output = data.replace(
-                            '<a href="#">reset password</a>',
-                            `<a href="http://localhost:3000/user-account/reset-password/${tokenGenrate}">reset password</a>`
-                        );
+            fs.readFile(path.join(rootFolder, "views", "tamplates", "mail.ejs"), "utf-8", function (err, data) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const output = data.replace(
+                        '<a href="#">reset password</a>',
+                        `<a href="http://localhost:3000/user-account/reset-password/${tokenGenrate}">reset password</a>`
+                    );
 
-                        let transporter = nodemailer.createTransport({
-                            service: 'gmail',
-                            auth: {
-                                user: cart.EMAIL,
-                                pass: cart.PASS,
-                            },
-                        });
+                    let transporter = nodemailer.createTransport({
+                        service: "gmail",
+                        auth: {
+                            user: cart.EMAIL,
+                            pass: cart.PASS,
+                        },
+                    });
 
-                        const mailoption = {
-                            from: cart.EMAIL,
-                            to: email,
-                            subject: 'rest password',
-                            text: 'rest-password request',
-                            html: output,
-                        };
+                    const mailoption = {
+                        from: cart.EMAIL,
+                        to: email,
+                        subject: "rest password",
+                        text: "rest-password request",
+                        html: output,
+                    };
 
-                        transporter.sendMail(mailoption, function (err, data) {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                console.log('mail send');
-                            }
-                        });
-                    }
+                    transporter.sendMail(mailoption, function (err, data) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log("mail send");
+                        }
+                    });
                 }
-            );
+            });
         } else {
-            console.log('email is required');
+            console.log("email is required");
         }
     } catch (err) {
         console.log(err);
@@ -169,16 +165,16 @@ const userResetPasswordRequest = async function (req, res, next) {
             if (userUpdateDataDb) {
                 return res.status(200).json({
                     success: true,
-                    message: 'password reset successful',
+                    message: "password reset successful",
                 });
             } else {
                 return res.status(200).json({
                     success: false,
-                    message: 'somthing worng',
+                    message: "somthing worng",
                 });
             }
         } else {
-            console.log('somthing worng!!');
+            console.log("somthing worng!!");
         }
     } catch (err) {
         console.log(err);

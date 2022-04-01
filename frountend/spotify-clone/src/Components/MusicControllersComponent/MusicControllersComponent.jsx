@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectedMusic, playButtonCartELm } from '../../Redux/Action/action';
-import {
-    musicInfoData,
-    playMusic,
-    pauseMusic,
-    ChangePrev,
-    ChangeToNext,
-    dataAboutAudio,
-} from './MusicHandler';
-import SeekBarComponent from '../SeekBarComponent/SeekBarComponent';
-import { backEndUrl } from '../../Util/Info';
-import { isPlayHandler, prevImageInfoHandler } from '../../Redux/Action/action';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedMusic, playButtonCartELm } from "../../Redux/Action/action";
+import { musicInfoData, playMusic, pauseMusic, ChangePrev, ChangeToNext, dataAboutAudio } from "./MusicHandler";
+import SeekBarComponent from "../SeekBarComponent/SeekBarComponent";
+import { backEndUrl } from "../../Util/Info";
+import { isPlayHandler, prevImageInfoHandler } from "../../Redux/Action/action";
 
-import './MusicControllersComponent.css';
+import "./MusicControllersComponent.css";
 
 function MusicControllersComponent({ data, musicAllData }) {
     const dispatch = useDispatch();
@@ -27,18 +20,15 @@ function MusicControllersComponent({ data, musicAllData }) {
     const [BackEndUrl, setBackEndUrl] = useState(null);
 
     // grab the aduio element
-    const audioElmDiv = document.querySelector('.audio_div_elm');
-    const audioDurationControll = document.querySelector('.audio_controlle_elm');
-    const playButton = document.querySelector('.playButton');
+    const audioElmDiv = document.querySelector(".audio_div_elm");
+    const audioDurationControll = document.querySelector(".audio_controlle_elm");
+    const playButton = document.querySelector(".playButton");
 
     // set the current time and current song duration
     const getDataAboutMusic = function (elem) {
         dataAboutAudio(elem, audioDurationControll, setCurrentMusicElm, setMusicCurrentTime);
         // when the playlist is over the restart the playlist
-        if (
-            audioElmDiv.currentTime === audioElmDiv.duration &&
-            CurrentMusicElm === musicAllData.length - 1
-        ) {
+        if (audioElmDiv.currentTime === audioElmDiv.duration && CurrentMusicElm === musicAllData.length - 1) {
             setCurrentMusicElm(0);
         }
     };
@@ -71,18 +61,13 @@ function MusicControllersComponent({ data, musicAllData }) {
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         // if the user change the music then store the next music id. for handling the current music card
         dispatch(
-            playButtonCartELm(
-                musicAllData[CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1]
-                    ._id
-            )
+            playButtonCartELm(musicAllData[CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1]._id)
         );
         // set the prev image by clicking on the next button
         dispatch(
             prevImageInfoHandler(
                 `${BackEndUrl ? BackEndUrl : null}/CoverImage/${
-                    musicAllData[
-                        CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1
-                    ].songCover
+                    musicAllData[CurrentMusicElm === musicAllData.length - 1 ? 0 : CurrentMusicElm + 1].songCover
                 }`
             )
         );
@@ -95,17 +80,12 @@ function MusicControllersComponent({ data, musicAllData }) {
         // autoPlayMusic(audioElmDiv, IsPlay, playButton, dispatch, isPlayHandler);
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         dispatch(
-            playButtonCartELm(
-                musicAllData[CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1]
-                    ._id
-            )
+            playButtonCartELm(musicAllData[CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1]._id)
         );
         dispatch(
             prevImageInfoHandler(
                 `${BackEndUrl ? BackEndUrl : null}/CoverImage/${
-                    musicAllData[
-                        CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1
-                    ].songCover
+                    musicAllData[CurrentMusicElm === 0 ? musicAllData.length - 1 : CurrentMusicElm - 1].songCover
                 }`
             )
         );
@@ -184,9 +164,7 @@ function MusicControllersComponent({ data, musicAllData }) {
                         ></audio>
                     ) : musicAllData ? (
                         <audio
-                            src={`${BackEndUrl ? BackEndUrl : null}/music/${
-                                musicAllData[0].musicPath
-                            }`}
+                            src={`${BackEndUrl ? BackEndUrl : null}/music/${musicAllData[0].musicPath}`}
                             controls
                             className="audio_div_elm"
                             onLoadedData={handleLoadMetadata}
