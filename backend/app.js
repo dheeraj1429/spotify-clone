@@ -41,8 +41,6 @@ const admin = require("./routes/adminRouter");
 app.use("/user", auth);
 app.use("/music", admin);
 
-
-
 conntion(() => {
   // server start
   app.listen(port, () => {

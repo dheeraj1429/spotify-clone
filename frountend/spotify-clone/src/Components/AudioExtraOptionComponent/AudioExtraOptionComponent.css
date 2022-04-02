@@ -1,0 +1,40 @@
+.audio_ex_controlle_div i {
+     color: var(--mainColor);
+     cursor: pointer;
+     transition: all .3s ease;
+}
+
+.likeSong {
+     animation: likeAnimation .4s ease;
+     color: var(--likeColor) !important;
+}
+
+.unlikeSong {
+     animation: unlikeAnimation .4s ease !important;
+     color: var(--mainColor) !important;
+}
+
+
+@keyframes likeAnimation {
+     0% {
+          transform: scale(1);
+     }
+     50% {
+          transform: scale(1.4);
+     }
+     100% {
+          transform: scale(1);
+     }
+}
+
+@keyframes unlikeAnimation {
+     0% {
+          transform: scale(1);
+     }
+     50% {
+          transform: scale(1.4);
+     }
+     100% {
+          transform: scale(1);
+     }
+}

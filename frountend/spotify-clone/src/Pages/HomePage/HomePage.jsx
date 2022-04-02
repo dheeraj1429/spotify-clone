@@ -1,11 +1,11 @@
-import React from 'react';
-import SidebarComponent from '../../Components/SidebarComponent/SidebarComponent';
-import { Outlet } from 'react-router';
+import React from "react";
+import SidebarComponent from "../../Components/SidebarComponent/SidebarComponent";
+import { Outlet } from "react-router";
 
-import RightSideBarComponent from '../../Components/RightSideBarComponent/RightSideBarComponent';
-import FooterPlayComponent from '../../Components/FooterPlayComponent/FooterPlayComponent';
+import RightSideBarComponent from "../../Components/RightSideBarComponent/RightSideBarComponent";
+import FooterPlayComponent from "../../Components/FooterPlayComponent/FooterPlayComponent";
 
-import './HomePage.css';
+import "./HomePage.css";
 
 function HomePage() {
     return (
@@ -14,7 +14,7 @@ function HomePage() {
                 <div className="row gx-0">
                     <div className="col-12 col-sm-12 col-md-2">
                         <SidebarComponent />
-                    </div>
+                </div>
                     <div className="col-12 col-sm-12 col-md-8">
                         <Outlet />
                     </div>

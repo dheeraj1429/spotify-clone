@@ -1,8 +1,8 @@
-import React from 'react';
-import MusicCardComponent from '../MusicCardComponent/MusicCardComponent';
-import { useSelector } from 'react-redux';
+import React from "react";
+import MusicCardComponent from "../MusicCardComponent/MusicCardComponent";
+import { useSelector } from "react-redux";
 
-import './AllMusicComponent.css';
+import "./AllMusicComponent.css";
 
 function AllMusicComponent() {
     const selector = useSelector((state) => state.userStoreData.AllMusicList);

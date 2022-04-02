@@ -4,7 +4,6 @@ const songs = require('../model/music');
 const uploadMusic = async function (req, res, next) {
     try {
         const file = req.files;
-
         const songPath = file[0].path;
         const coverImagePath = file[1].path;
         const songUploadName = file[0].originalname;

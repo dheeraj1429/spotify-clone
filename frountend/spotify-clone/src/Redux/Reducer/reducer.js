@@ -1,4 +1,4 @@
-import ACTION_TYPE from '../ActionType/actionType';
+import ACTION_TYPE from "../ActionType/actionType";
 
 const initalState = {
     UserLoginStatus: null,
@@ -12,6 +12,21 @@ const initalState = {
     CartButtonElm: null,
     ShowMusicPrevCart: false,
     PrevImageInfo: null,
+    SongLikeStore: [],
+    SongLikeButton: false,
+    SongsMusicArrayList: null,
+    LibrarySongsPlay: false,
+    SongsNavigator: false,
+};
+
+const grounSongLike = function (item, addtoLike) {
+    const present = item.find((el) => el._id === addtoLike._id);
+
+    if (present) {
+        return item.filter((el) => el._id !== addtoLike._id);
+    }
+
+    return item.concat(addtoLike);
 };
 
 const userReducer = function (state = initalState, action) {
@@ -86,6 +101,30 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 PrevImageInfo: action.payload,
+            };
+
+        case ACTION_TYPE.SONG_LIKE:
+            return {
+                ...state,
+                SongLikeStore: grounSongLike(state.SongLikeStore, action.payload),
+            };
+
+        case ACTION_TYPE.ALL_SONGS_HANDLER:
+            return {
+                ...state,
+                SongsMusicArrayList: action.payload,
+            };
+
+        case ACTION_TYPE.LIBRARY_SONG_HANDLER:
+            return {
+                ...state,
+                LibrarySongsPlay: action.payload,
+            };
+
+        case ACTION_TYPE.SONGS_NAVIGATOR:
+            return {
+                ...state,
+                SongsNavigator: action.payload,
             };
 
         default:

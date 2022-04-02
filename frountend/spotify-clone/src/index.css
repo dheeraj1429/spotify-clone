@@ -42,10 +42,11 @@ code {
 /* color */
 :root {
     --lightGreen: #1db954;
+    --likeColor: rgb(255, 38, 38);
     --dark: #100f0f;
     --mainColor: #ffff;
     --black: #000;
-    --grayColor: rgb(34, 34, 34);
+    --grayColor: rgb(23, 23, 23);
     --lightWhite: #b3b3b3;
     --grayLight: rgb(95, 95, 95);
     --lightBgCl: #f4f6fd;
@@ -56,6 +57,7 @@ code {
     --redCl: #e73c3c;
     --sm_gray: #3f3f3f;
 }
+
 /* color */
 
 /* global classes */
@@ -78,4 +80,5 @@ a {
 .top_padding_one {
     padding: 120px 0;
 }
+
 /* global classes */

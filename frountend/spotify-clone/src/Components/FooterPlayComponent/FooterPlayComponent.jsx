@@ -1,8 +1,9 @@
-import React from 'react';
-import MusicControllersComponent from '../MusicControllersComponent/MusicControllersComponent';
-import SongInfoSmCartComponent from '../SongInfoSmCartComponent/SongInfoSmCartComponent';
-import { useSelector } from 'react-redux';
-import './FooterPlayComponent.css';
+import React from "react";
+import MusicControllersComponent from "../MusicControllersComponent/MusicControllersComponent";
+import SongInfoSmCartComponent from "../SongInfoSmCartComponent/SongInfoSmCartComponent";
+import AudioExtraOptionComponent from "../AudioExtraOptionComponent/AudioExtraOptionComponent";
+import { useSelector } from "react-redux";
+import "./FooterPlayComponent.css";
 
 function FooterPlayComponent() {
     const selector = useSelector((state) => state.userStoreData);
@@ -15,17 +16,19 @@ function FooterPlayComponent() {
                         {selector.SelectedMusic !== null ? (
                             <SongInfoSmCartComponent
                                 data={selector.SelectedMusic}
-                                musicAllData={selector.AllMusicList}
+                                musicAllData={selector.SongsMusicArrayList}
                             />
                         ) : null}
                     </div>
                     <div className="col-12 col-sm-12 col-md-4">
                         <MusicControllersComponent
                             data={selector.SelectedMusic}
-                            musicAllData={selector.AllMusicList}
+                            musicAllData={selector.SongsMusicArrayList}
                         />
                     </div>
-                    <div className="col-12 col-sm-12 col-md-4"></div>
+                    <div className="col-12 col-sm-12 col-md-4 d-flex justify-content-end pe-4">
+                        {selector.SelectedMusic ? <AudioExtraOptionComponent data={selector.SelectedMusic} /> : null}
+                    </div>
                 </div>
             </div>
         </div>

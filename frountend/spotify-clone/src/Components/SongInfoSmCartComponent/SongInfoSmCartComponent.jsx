@@ -1,16 +1,17 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { showTheMusicPrev, prevImageInfoHandler } from '../../Redux/Action/action';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showTheMusicPrev, prevImageInfoHandler } from "../../Redux/Action/action";
+import { backEndUrl } from "../../Util/Info";
 
-import './SongInfoSmCartComponent.css';
+import "./SongInfoSmCartComponent.css";
 
-function SongInfoSmCartComponent({ data, musicAllData }) {
+function SongInfoSmCartComponent({ data }) {
     const dispatch = useDispatch();
     const selector = useSelector((state) => state.userStoreData);
 
     const ShowPrevImageHandler = function () {
         dispatch(showTheMusicPrev(!selector.ShowMusicPrevCart));
-        dispatch(prevImageInfoHandler(`http://localhost:8000//CoverImage/${data.songCover}`));
+        dispatch(prevImageInfoHandler(`${backEndUrl}/CoverImage/${data.songCover}`));
     };
 
     return (
@@ -22,7 +23,7 @@ function SongInfoSmCartComponent({ data, musicAllData }) {
                         style={
                             data.songCover
                                 ? {
-                                      backgroundImage: `url(http://localhost:8000//CoverImage/${data.songCover})`,
+                                      backgroundImage: `url(${backEndUrl}/CoverImage/${data.songCover})`,
                                   }
                                 : null
                         }

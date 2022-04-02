@@ -4,12 +4,15 @@ import { selectedMusic, playButtonCartELm } from "../../Redux/Action/action";
 import { musicInfoData, playMusic, pauseMusic, ChangePrev, ChangeToNext, dataAboutAudio } from "./MusicHandler";
 import SeekBarComponent from "../SeekBarComponent/SeekBarComponent";
 import { backEndUrl } from "../../Util/Info";
-import { isPlayHandler, prevImageInfoHandler } from "../../Redux/Action/action";
+import { isPlayHandler, prevImageInfoHandler, librarySong } from "../../Redux/Action/action";
+import { useLocation } from "react-router";
 
 import "./MusicControllersComponent.css";
 
 function MusicControllersComponent({ data, musicAllData }) {
     const dispatch = useDispatch();
+    const location = useLocation();
+
     const selector = useSelector((state) => state.userStoreData.SelectedMusic);
     const IsPlay = useSelector((state) => state.userStoreData.IsPlay);
 
@@ -103,11 +106,21 @@ function MusicControllersComponent({ data, musicAllData }) {
     const CheckAudioPlaying = function () {
         playMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         dispatch(isPlayHandler(true));
+
+        if (location.pathname === "/Your-Library") {
+            dispatch(librarySong(true));
+        } else if (location.pathname === "/") {
+            dispatch(librarySong(false));
+        }
     };
 
     const CheckAudioPause = function () {
         pauseMusic(playButton, IsPlay, audioElmDiv, dispatch, isPlayHandler);
         dispatch(isPlayHandler(false));
+
+        if (location.pathname === "/Your-Library") {
+            dispatch(librarySong(false));
+        }
     };
 
     useEffect(() => {
@@ -148,7 +161,7 @@ function MusicControllersComponent({ data, musicAllData }) {
         <>
             <div className="music_controoles_div show_music_controlles">
                 <div className="d-flex justify-content-center">
-                    {selector ? (
+                    {selector && musicAllData ? (
                         <audio
                             src={`${BackEndUrl ? BackEndUrl : null}/music/${selector.musicPath}`}
                             controls
@@ -173,7 +186,7 @@ function MusicControllersComponent({ data, musicAllData }) {
                     ) : null}
 
                     <div className="controlles_buttons_div d-flex align-items-center">
-                        <i class="fas fa-random"></i>
+                        {/* <i class="fas fa-random"></i> */}
                         <i
                             class="fas fa-angle-left"
                             onClick={(e) => {
@@ -197,7 +210,7 @@ function MusicControllersComponent({ data, musicAllData }) {
                             }}
                             data-target="nextButton"
                         ></i>
-                        <i class="fas fa-repeat"></i>
+                        {/* <i class="fas fa-repeat"></i> */}
                     </div>
                 </div>
                 <div className="music_info_div">

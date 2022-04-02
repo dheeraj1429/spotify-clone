@@ -1,8 +1,8 @@
-import ACTION_TYPE from '../ActionType/actionType';
-import axios from 'axios';
+import ACTION_TYPE from "../ActionType/actionType";
+import axios from "axios";
 
 const headers = {
-    'Content-type': 'application/json',
+    "Content-type": "application/json",
 };
 
 // user sign up
@@ -12,7 +12,7 @@ export const userSignUp = function (data) {
             const userRef = await axios.post(`/user/singUp`, { data }, { headers });
 
             if (userRef) {
-                window.localStorage.setItem('userData', JSON.stringify(userRef.data));
+                window.localStorage.setItem("userData", JSON.stringify(userRef.data));
 
                 dispatch({
                     type: ACTION_TYPE.USER_SIGNUP,
@@ -37,10 +37,10 @@ export const userPresent = function (data) {
 export const userLogIn = function (data) {
     return async function (dispatch) {
         try {
-            const userLoginRef = await axios.post('/user/logIn', { data }, { headers });
+            const userLoginRef = await axios.post("/user/logIn", { data }, { headers });
 
             if (userLoginRef) {
-                window.localStorage.setItem('userData', JSON.stringify(userLoginRef.data));
+                window.localStorage.setItem("userData", JSON.stringify(userLoginRef.data));
 
                 dispatch({
                     type: ACTION_TYPE.USER_SIGNUP,
@@ -57,11 +57,7 @@ export const userLogIn = function (data) {
 export const userForgetPassword = function (data) {
     return async function (dispatch) {
         try {
-            const forgetPasswordRef = await axios.post(
-                '/user/forgetPassword',
-                { data },
-                { headers }
-            );
+            const forgetPasswordRef = await axios.post("/user/forgetPassword", { data }, { headers });
 
             console.log(forgetPasswordRef);
         } catch (err) {
@@ -74,7 +70,7 @@ export const userForgetPassword = function (data) {
 export const userResetPasswordRequest = function (data) {
     return async function (dispatch) {
         try {
-            const userRef = await axios.post('/user/reset-password', { data }, { headers });
+            const userRef = await axios.post("/user/reset-password", { data }, { headers });
 
             if (userRef) {
                 dispatch({
@@ -116,11 +112,16 @@ export const uploadMusic = function (data) {
 export const getAllMusic = function () {
     return async function (dispatch) {
         try {
-            const allMusicList = await axios.post('/music/getAllMusic');
+            const allMusicList = await axios.post("/music/getAllMusic");
 
             if (allMusicList) {
                 dispatch({
                     type: ACTION_TYPE.ALL_MUSIC_LIST,
+                    payload: allMusicList.data,
+                });
+
+                dispatch({
+                    type: ACTION_TYPE.ALL_SONGS_HANDLER,
                     payload: allMusicList.data,
                 });
             }
@@ -165,6 +166,45 @@ export const showTheMusicPrev = function (data) {
 export const prevImageInfoHandler = function (data) {
     return {
         type: ACTION_TYPE.PREV_IMAGE_INFO,
+        payload: data,
+    };
+};
+
+// song like
+export const songLike = function (data) {
+    return {
+        type: ACTION_TYPE.SONG_LIKE,
+        payload: data,
+    };
+};
+
+// song like button
+export const songLikeHandler = function (data) {
+    return {
+        type: ACTION_TYPE.SONG_LIKE_HANDLER,
+        payload: data,
+    };
+};
+
+// all songs handler
+export const allSongsHandler = function (data) {
+    return {
+        type: ACTION_TYPE.ALL_SONGS_HANDLER,
+        payload: data,
+    };
+};
+
+export const SongsNavigator = function (data) {
+    return {
+        type: ACTION_TYPE.SONGS_NAVIGATOR,
+        payload: data,
+    };
+};
+
+// library songs play
+export const librarySong = function (data) {
+    return {
+        type: ACTION_TYPE.LIBRARY_SONG_HANDLER,
         payload: data,
     };
 };
