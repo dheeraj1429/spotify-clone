@@ -1,12 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './SideBarSmOptionComponent.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./SideBarSmOptionComponent.css";
 
 function SideBarSmOptionComponent({ icon, innerText, onClick, active }) {
     return (
-        <Link to={innerText === 'Home' ? '/' : `/${innerText.replaceAll(' ', '-')}`}>
+        <Link
+            to={
+                innerText === "Home"
+                    ? "/"
+                    : innerText === "Liked"
+                    ? "/Your-Library"
+                    : `/${innerText.replaceAll(" ", "-")}`
+            }
+        >
             <div
-                className={active === innerText ? 'option_sm_div option_active' : 'option_sm_div'}
+                className={active === innerText ? "option_sm_div option_active" : "option_sm_div"}
                 onClick={onClick ? onClick : null}
                 data-elm={innerText}
             >

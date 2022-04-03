@@ -49,18 +49,18 @@ const playMusic = function (elm, state, audio) {
                 audio.muted = true;
                 audio.play();
                 audio.muted = false;
-                elm.classList.replace('fa-play', 'fa-pause');
+                elm.classList.replace("fa-play", "fa-pause");
             })
             .catch((err) => {
                 console.log(err);
-                elm.classList.replace('fa-pause', 'fa-play');
+                elm.classList.replace("fa-pause", "fa-play");
             });
     }
 };
 
 // pause music funtion
 const pauseMusic = function (elm, state, audio) {
-    elm.classList.replace('fa-pause', 'fa-play');
+    elm.classList.replace("fa-pause", "fa-play");
     audio.pause();
 };
 

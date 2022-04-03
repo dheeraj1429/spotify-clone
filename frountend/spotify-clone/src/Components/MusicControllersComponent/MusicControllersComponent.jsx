@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 
 import "./MusicControllersComponent.css";
 
-function MusicControllersComponent({ data, musicAllData }) {
+function MusicControllersComponent({ data, musicAllData, volume }) {
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -21,6 +21,7 @@ function MusicControllersComponent({ data, musicAllData }) {
     const [MusicCurrentTime, setMusicCurrentTime] = useState(0);
     const [CurrentMusicElm, setCurrentMusicElm] = useState(0);
     const [BackEndUrl, setBackEndUrl] = useState(null);
+    const [AudioVal, setAudioVal] = useState(1);
 
     // grab the aduio element
     const audioElmDiv = document.querySelector(".audio_div_elm");
@@ -156,6 +157,14 @@ function MusicControllersComponent({ data, musicAllData }) {
     useEffect(() => {
         setBackEndUrl(backEndUrl);
     }, []);
+
+    useEffect(() => {
+        if (audioElmDiv) {
+            const numValue = +volume;
+            setAudioVal(numValue / 100);
+            audioElmDiv.volume = AudioVal;
+        }
+    }, [volume]);
 
     return (
         <>

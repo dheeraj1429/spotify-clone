@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MusicControllersComponent from "../MusicControllersComponent/MusicControllersComponent";
 import SongInfoSmCartComponent from "../SongInfoSmCartComponent/SongInfoSmCartComponent";
 import AudioExtraOptionComponent from "../AudioExtraOptionComponent/AudioExtraOptionComponent";
@@ -7,6 +7,12 @@ import "./FooterPlayComponent.css";
 
 function FooterPlayComponent() {
     const selector = useSelector((state) => state.userStoreData);
+    const [AudioVolume, setAudioVolume] = useState(100);
+
+    const AudioControll = function (e) {
+        let value = e.target.value;
+        setAudioVolume(value);
+    };
 
     return (
         <div className="play_footer_Component_div">
@@ -24,10 +30,17 @@ function FooterPlayComponent() {
                         <MusicControllersComponent
                             data={selector.SelectedMusic}
                             musicAllData={selector.SongsMusicArrayList}
+                            volume={AudioVolume}
                         />
                     </div>
                     <div className="col-12 col-sm-12 col-md-4 d-flex justify-content-end pe-4">
-                        {selector.SelectedMusic ? <AudioExtraOptionComponent data={selector.SelectedMusic} /> : null}
+                        {selector.SelectedMusic ? (
+                            <AudioExtraOptionComponent
+                                data={selector.SelectedMusic}
+                                audioFunction={AudioControll}
+                                value={AudioVolume}
+                            />
+                        ) : null}
                     </div>
                 </div>
             </div>

@@ -208,3 +208,11 @@ export const librarySong = function (data) {
         payload: data,
     };
 };
+
+// song current element
+export const songCurrentElm = function (data) {
+    return {
+        type: ACTION_TYPE.SONG_CURRENT_ELM,
+        payload: data,
+    };
+};

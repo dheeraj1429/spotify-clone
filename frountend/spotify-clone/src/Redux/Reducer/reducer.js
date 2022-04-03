@@ -17,6 +17,7 @@ const initalState = {
     SongsMusicArrayList: null,
     LibrarySongsPlay: false,
     SongsNavigator: false,
+    SongCurrentElm: 0,
 };
 
 const grounSongLike = function (item, addtoLike) {
@@ -125,6 +126,12 @@ const userReducer = function (state = initalState, action) {
             return {
                 ...state,
                 SongsNavigator: action.payload,
+            };
+
+        case ACTION_TYPE.SONG_CURRENT_ELM:
+            return {
+                ...state,
+                SongCurrentElm: action.payload,
             };
 
         default:

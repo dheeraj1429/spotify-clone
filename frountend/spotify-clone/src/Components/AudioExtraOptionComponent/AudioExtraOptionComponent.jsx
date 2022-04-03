@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { songLike, songLikeHandler } from "../../Redux/Action/action";
+import SeekBarComponent from "../SeekBarComponent/SeekBarComponent";
+
 import "./AudioExtraOptionComponent.css";
 
 function AudioExtraOptionComponent(data) {
@@ -27,7 +29,7 @@ function AudioExtraOptionComponent(data) {
     };
 
     return (
-        <div className="audio_ex_controlle_div">
+        <div className="audio_ex_controlle_div d-flex">
             <i
                 class={LikeSongs ? "fas fa-heart likeSong" : "fas fa-heart unlikeSong"}
                 onClick={(e) => {
@@ -35,6 +37,21 @@ function AudioExtraOptionComponent(data) {
                     LikeSongHandler(e);
                 }}
             ></i>
+
+            <div className="d-flex  align-items-center">
+                <i
+                    class={
+                        data.value > 50
+                            ? "fas fa-volume-up"
+                            : data.value > 1
+                            ? "fas fa-volume-down"
+                            : data.value >= 0
+                            ? "fas fa-volume-mute"
+                            : null
+                    }
+                ></i>
+                <SeekBarComponent change={data.audioFunction} value={data.value} />
+            </div>
         </div>
     );
 }
