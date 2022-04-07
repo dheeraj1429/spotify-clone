@@ -1,12 +1,18 @@
-const mongoose = require('mongoose');
-const cart = require('../cart');
+const mongoose = require("mongoose");
+
+const url = `mongodb+srv://dheeraj:OooMwFtsMVQYCkL4@cluster0.sqtil.mongodb.net/spotify-clone?retryWrites=true&w=majority`;
+const pass = "OooMwFtsMVQYCkL4";
+
+const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
 
 const conntion = function (callBack) {
     mongoose
-        .connect(cart.DBURL)
+        .connect(url, connectionParams)
         .then((resutl) => {
-            console.log('connected');
-
+            console.log("connected");
             callBack();
         })
         .catch((err) => {
